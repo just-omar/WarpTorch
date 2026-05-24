@@ -4,6 +4,9 @@ env/
 ENV/
 .venv/
 
+CLAUDE.md
+PLAN.md
+
 # Environment variables
 .env
 .env.local

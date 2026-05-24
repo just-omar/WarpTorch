@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from typing import Optional
 import numpy as np
 import sys
 import os
@@ -20,7 +21,15 @@ from core.solver.autodiff_curvature import get_christoffel_symbols, AutodiffCurv
 from core.visualizer.slicing import get_2d_slice
 from core.utils import get_best_device
 
+# Import database and storage
+from database import SimulationDatabase, SimulationRecord, get_database
+from storage import SimulationStorage, get_storage
+
 app = FastAPI(title="WarpTorch API")
+
+# Initialize database and storage
+db = get_database()
+storage = get_storage()
 
 # CORS configuration
 cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:3005").split(",")
@@ -77,8 +86,177 @@ async def health():
         "version": "1.0.0"
     }
 
+# ================================================================
+# SIMULATION HISTORY & MANAGEMENT ENDPOINTS
+# ================================================================
+
+@app.get("/api/simulations")
+async def get_simulations(
+    limit: int = 50,
+    metric_type: Optional[str] = None
+):
+    """Get simulation history."""
+    simulations = db.get_recent_simulations(limit=limit, metric_type=metric_type)
+    return {
+        "success": True,
+        "simulations": [
+            {
+                "id": sim.id,
+                "timestamp": sim.timestamp,
+                "metric_type": sim.metric_type,
+                "params": sim.params,
+                "statistics": sim.statistics,
+                "energy_condition": sim.energy_condition,
+                "method": sim.method,
+                "grid_size": sim.grid_size,
+                "notes": sim.notes,
+                "tags": sim.tags,
+                "rating": sim.rating
+            }
+            for sim in simulations
+        ]
+    }
+
+@app.get("/api/simulations/{sim_id}")
+async def get_simulation(sim_id: int):
+    """Get a specific simulation by ID."""
+    record = db.get_simulation(sim_id)
+    if not record:
+        raise HTTPException(status_code=404, detail="Simulation not found")
+
+    # Load full data if available
+    full_data = None
+    if record.file_path and os.path.exists(record.file_path):
+        try:
+            full_data = storage.load_simulation_data(record.file_path)
+        except Exception as e:
+            print(f"Warning: Could not load full data: {e}")
+
+    return {
+        "success": True,
+        "simulation": {
+            "id": record.id,
+            "timestamp": record.timestamp,
+            "metric_type": record.metric_type,
+            "params": record.params,
+            "statistics": record.statistics,
+            "energy_condition": record.energy_condition,
+            "method": record.method,
+            "grid_size": record.grid_size,
+            "notes": record.notes,
+            "tags": record.tags,
+            "rating": record.rating,
+            "file_path": record.file_path
+        },
+        "full_data": full_data
+    }
+
+@app.put("/api/simulations/{sim_id}")
+async def update_simulation(
+    sim_id: int,
+    notes: Optional[str] = None,
+    tags: Optional[str] = None,
+    rating: Optional[int] = None
+):
+    """Update simulation metadata (notes, tags, rating)."""
+    success = db.update_simulation(sim_id, notes=notes, tags=tags, rating=rating)
+    if not success:
+        raise HTTPException(status_code=404, detail="Simulation not found")
+    return {"success": True, "message": "Simulation updated"}
+
+@app.delete("/api/simulations/{sim_id}")
+async def delete_simulation(sim_id: int):
+    """Delete a simulation and its data file."""
+    success = db.delete_simulation(sim_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Simulation not found")
+    return {"success": True, "message": "Simulation deleted"}
+
+@app.get("/api/simulations/top-rated")
+async def get_top_rated(limit: int = 10):
+    """Get top-rated simulations."""
+    simulations = db.get_top_rated(limit=limit)
+    return {
+        "success": True,
+        "simulations": [
+            {
+                "id": sim.id,
+                "timestamp": sim.timestamp,
+                "metric_type": sim.metric_type,
+                "params": sim.params,
+                "statistics": sim.statistics,
+                "rating": sim.rating,
+                "notes": sim.notes,
+                "tags": sim.tags
+            }
+            for sim in simulations
+        ]
+    }
+
+@app.get("/api/simulations/search")
+async def search_simulations(query: str, metric_type: Optional[str] = None):
+    """Search simulations by tags, notes, or params."""
+    simulations = db.search_simulations(query, metric_type=metric_type)
+    return {
+        "success": True,
+        "simulations": [
+            {
+                "id": sim.id,
+                "timestamp": sim.timestamp,
+                "metric_type": sim.metric_type,
+                "params": sim.params,
+                "statistics": sim.statistics,
+                "notes": sim.notes,
+                "tags": sim.tags,
+                "rating": sim.rating
+            }
+            for sim in simulations
+        ]
+    }
+
+@app.get("/api/simulations/stats/overview")
+async def get_statistics():
+    """Get database statistics."""
+    stats = db.get_statistics()
+    return {"success": True, "statistics": stats}
+
+@app.post("/api/simulations/{sim_id}/export")
+async def export_simulation(sim_id: int, format: str = "json"):
+    """Export simulation data for analysis."""
+    record = db.get_simulation(sim_id)
+    if not record:
+        raise HTTPException(status_code=404, detail="Simulation not found")
+
+    # Load data
+    if record.file_path and os.path.exists(record.file_path):
+        data = storage.load_simulation_data(record.file_path)
+    else:
+        raise HTTPException(status_code=404, detail="Data file not found")
+
+    # Export
+    try:
+        export_path = storage.export_for_comparison(sim_id, data, format=format)
+        return {
+            "success": True,
+            "export_path": export_path,
+            "format": format
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Export failed: {str(e)}")
+
+# ================================================================
+# SIMULATION ENDPOINTS WITH AUTO-SAVE
+# ================================================================
+
 @app.post("/api/simulate/alcubierre")
-async def simulate_alcubierre(params: AlcubierreParams):
+async def simulate_alcubierre(params: AlcubierreParams, save: bool = True):
+    """
+    Run Alcubierre warp bubble simulation with optional auto-save.
+
+    Args:
+        params: Simulation parameters
+        save: If True, save results to database (default: True)
+    """
     try:
         # Get device for computations
         device = get_best_device()
@@ -111,12 +289,46 @@ async def simulate_alcubierre(params: AlcubierreParams):
             "std": float(np.std(t00_numpy))
         }
 
+        # Prepare full data for storage
+        full_data = {
+            "energy_density": t00_numpy,
+            "metric_tensor": metric_tensor.tensor.cpu().numpy() if hasattr(metric_tensor.tensor, 'cpu') else metric_tensor.tensor,
+            "energy_tensor": energy_tensor.tensor.cpu().numpy() if hasattr(energy_tensor.tensor, 'cpu') else energy_tensor.tensor,
+            "grid_scaling": metric_tensor.grid_scaling
+        }
+
+        # Save to database and storage if requested
+        sim_id = None
+        if save:
+            # Save full data to file
+            file_path = storage.save_simulation_data(
+                metric_type="alcubierre",
+                params=params.model_dump(),
+                data=full_data,
+                save_full_data=True
+            )
+
+            # Create database record
+            record = SimulationRecord(
+                metric_type="alcubierre",
+                params=params.model_dump(),
+                statistics=energy_stats,
+                energy_condition="Negative (requires exotic matter)",
+                method=params.method,
+                grid_size=list(t00_numpy.shape),
+                file_path=file_path,
+                tags=f"velocity={params.velocity},radius={params.radius}"
+            )
+
+            sim_id = db.save_simulation(record)
+
         # Prepare data for transmission (sample for performance)
         sample_rate = max(1, params.gridSize // 64)  # Max 64x64 points
         sampled_data = t00_numpy[::sample_rate, ::sample_rate].tolist()
 
         return {
             "success": True,
+            "simulation_id": sim_id,
             "params": params.model_dump(),
             "statistics": energy_stats,
             "grid_size": list(t00_numpy.shape),
@@ -125,7 +337,8 @@ async def simulate_alcubierre(params: AlcubierreParams):
                 "metric": "Alcubierre (1994)",
                 "description": "Classic superluminal warp bubble",
                 "energy_condition": "Negative (requires exotic matter)",
-                "method": params.method
+                "method": params.method,
+                "saved": save and sim_id is not None
             }
         }
 
