@@ -221,7 +221,7 @@ async def get_statistics():
     return {"success": True, "statistics": stats}
 
 @app.post("/api/simulations/{sim_id}/export")
-async def export_simulation(sim_id: int, format: str = "json"):
+async def export_simulation(sim_id: int, format: str = "npy"):
     """Export simulation data for analysis."""
     record = db.get_simulation(sim_id)
     if not record:
@@ -241,6 +241,17 @@ async def export_simulation(sim_id: int, format: str = "json"):
             "export_path": export_path,
             "format": format
         }
+    except ValueError as e:
+        # Handle data size errors with helpful message
+        if "too large" in str(e).lower():
+            raise HTTPException(
+                status_code=413,  # Payload Too Large
+                detail={
+                    "error": str(e),
+                    "suggestion": "Try using format='npy' for efficient binary export of large datasets."
+                }
+            )
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Export failed: {str(e)}")
 

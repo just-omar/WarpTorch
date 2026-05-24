@@ -87,6 +87,24 @@ class SimulationStorage:
         params: Dict[str, Any]
     ) -> str:
         """Save simulation data in JSON format (for small data or exports)."""
+        # Check total data size - if too large, refuse JSON export
+        total_elements = 0
+        for key, value in data.items():
+            if isinstance(value, np.ndarray):
+                total_elements += value.size
+            elif isinstance(value, dict):
+                for nested_key, nested_value in value.items():
+                    if isinstance(nested_value, np.ndarray):
+                        total_elements += nested_value.size
+
+        # Allow up to ~50K elements (~500KB-1MB JSON file)
+        MAX_JSON_ELEMENTS = 50000
+        if total_elements > MAX_JSON_ELEMENTS:
+            raise ValueError(
+                f"Data too large for JSON export: {total_elements:,} elements exceeds limit of {MAX_JSON_ELEMENTS:,}. "
+                f"Use format='npy' for efficient binary export instead."
+            )
+
         output_data = {
             'metadata': {
                 'timestamp': datetime.now().isoformat(),
@@ -101,6 +119,8 @@ class SimulationStorage:
                 output_data['data'][key] = value.tolist()
             elif isinstance(value, (np.integer, np.floating)):
                 output_data['data'][key] = float(value)
+            elif isinstance(value, list):
+                output_data['data'][key] = value
             else:
                 output_data['data'][key] = value
 
@@ -108,6 +128,12 @@ class SimulationStorage:
             json.dump(output_data, f, indent=2)
 
         return filepath
+
+    def _count_nested_elements(self, nested_list) -> int:
+        """Count total elements in nested list."""
+        if isinstance(nested_list, list):
+            return sum(self._count_nested_elements(item) for item in nested_list)
+        return 1
 
     def load_simulation_data(self, filepath: str) -> Dict[str, Any]:
         """Load simulation data from file."""
@@ -156,7 +182,7 @@ class SimulationStorage:
         self,
         sim_id: int,
         data: Dict[str, Any],
-        format: str = "json"
+        format: str = "npy"
     ) -> str:
         """
         Export simulation data for comparison/analysis.
