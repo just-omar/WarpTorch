@@ -1,20 +1,23 @@
 import { useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Grid } from '@react-three/drei'
-import WarpBubble from './components/WarpBubble' // Обратите внимание на новое имя файла!
+import WarpBubble from './components/WarpBubble'
 import AxesHelper from './components/AxesHelper'
 import SimulationPanel from './components/SimulationPanel'
 import './App.css'
 
 function App() {
   const [simulationData, setSimulationData] = useState<any>(null)
+  const [comparisonData, setComparisonData] = useState<any>(null)
   const [isSimulating, setIsSimulating] = useState(false)
-  
+  const [isComparing, setIsComparing] = useState(false)
+
   const [activeParams, setActiveParams] = useState({
     metric: 'alcubierre',
     velocity: 0.0,
     radius: 0.0,
-    sigma: 1.0
+    sigma: 1.0,
+    method: 'finite_diff'
   })
 
   const handleSimulationStart = async (params: any) => {
@@ -28,18 +31,20 @@ function App() {
           velocity: params.velocity,
           radius: params.radius,
           sigma: params.sigma,
-          gridSize: params.gridSize
+          gridSize: params.gridSize,
+          method: params.method
         })
       })
       const data = await response.json()
-      
+
       setSimulationData(data)
-      
+
       setActiveParams({
         metric: params.metric,
         velocity: params.velocity,
         radius: params.radius,
-        sigma: params.sigma
+        sigma: params.sigma,
+        method: params.method
       })
     } catch (error) {
       console.error('Simulation error:', error)
@@ -48,19 +53,47 @@ function App() {
     }
   }
 
+  const handleCompareMethods = async (params: any) => {
+    setIsComparing(true)
+    try {
+      const response = await fetch('/api/compare/methods', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          velocity: params.velocity,
+          radius: params.radius,
+          sigma: params.sigma,
+          gridSize: params.gridSize
+        })
+      })
+
+      const data = await response.json()
+      setComparisonData(data)
+
+      console.log('Comparison results:', data)
+    } catch (error) {
+      console.error('Comparison error:', error)
+    } finally {
+      setIsComparing(false)
+    }
+  }
+
   return (
     <div className="app">
       <SimulationPanel
         onStart={handleSimulationStart}
+        onCompare={handleCompareMethods}
         isSimulating={isSimulating}
+        isComparing={isComparing}
         results={simulationData}
+        comparisonResults={comparisonData}
       />
 
       <div className="canvas-container">
         <Canvas camera={{ position: [20, 15, 20], fov: 50 }}>
           <color attach="background" args={['#0a0a0f']} />
           <ambientLight intensity={0.5} />
-          
+
           <Grid
             args={[50, 50]}
             cellSize={1}
