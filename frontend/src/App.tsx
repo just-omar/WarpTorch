@@ -4,6 +4,8 @@ import { OrbitControls, Grid } from '@react-three/drei'
 import WarpBubble from './components/WarpBubble'
 import AxesHelper from './components/AxesHelper'
 import SimulationPanel from './components/SimulationPanel'
+import SimulationHistory from './components/SimulationHistory'
+import SimulationComparison from './components/SimulationComparison'
 import './App.css'
 
 function App() {
@@ -11,6 +13,9 @@ function App() {
   const [comparisonData, setComparisonData] = useState<any>(null)
   const [isSimulating, setIsSimulating] = useState(false)
   const [isComparing, setIsComparing] = useState(false)
+  const [showHistory, setShowHistory] = useState(false)
+  const [comparisonMode, setComparisonMode] = useState(false)
+  const [baseSimulationId, setBaseSimulationId] = useState<number | null>(null)
 
   const [activeParams, setActiveParams] = useState({
     metric: 'alcubierre',
@@ -99,8 +104,92 @@ function App() {
     }
   }
 
+  const handleLoadSimulation = async (simId: number) => {
+    try {
+      const response = await fetch(`/api/simulations/${simId}`)
+      const data = await response.json()
+
+      if (data.success) {
+        const sim = data.simulation
+
+        // Set active parameters from saved simulation
+        setActiveParams({
+          metric: sim.metric_type,
+          velocity: sim.params.velocity || 0.0,
+          radius: sim.params.radius || sim.params.scale || 0.0,
+          sigma: sim.params.sigma || 1.0,
+          method: sim.method
+        })
+
+        // If we have full data, load it directly
+        if (data.full_data) {
+          setSimulationData({
+            ...data.full_data,
+            metadata: {
+              simulation_id: sim.id,
+              loaded_from_history: true
+            }
+          })
+        } else {
+          // Otherwise run new simulation with saved parameters
+          await handleSimulationStart({
+            metric: sim.metric_type,
+            velocity: sim.params.velocity,
+            radius: sim.params.radius || sim.params.scale,
+            sigma: sim.params.sigma,
+            gridSize: sim.grid_size[1] || 96,
+            method: sim.method
+          })
+        }
+
+        setShowHistory(false)
+      }
+    } catch (error) {
+      console.error('Failed to load simulation:', error)
+      alert('Failed to load simulation. Please try again.')
+    }
+  }
+
+  const handleCompareSimulations = async (simId1: number, simId2: number) => {
+    try {
+      // Load both simulations
+      const [response1, response2] = await Promise.all([
+        fetch(`/api/simulations/${simId1}`),
+        fetch(`/api/simulations/${simId2}`)
+      ])
+
+      const data1 = await response1.json()
+      const data2 = await response2.json()
+
+      if (data1.success && data2.success) {
+        setComparisonData({
+          mode: 'simulation_comparison',
+          simulation_1: data1.simulation,
+          simulation_2: data2.simulation,
+          data_1: data1.full_data,
+          data_2: data2.full_data
+        })
+
+        setComparisonMode(true)
+        setShowHistory(false)
+      }
+    } catch (error) {
+      console.error('Failed to compare simulations:', error)
+      alert('Failed to compare simulations. Please try again.')
+    }
+  }
+
   return (
     <div className="app">
+      {/* History Button */}
+      <button
+        className="history-toggle-btn"
+        onClick={() => setShowHistory(!showHistory)}
+        title="Simulation History"
+      >
+        📚 History
+      </button>
+
       <SimulationPanel
         onStart={handleSimulationStart}
         onCompare={handleCompareMethods}
@@ -149,6 +238,26 @@ function App() {
           />
         </Canvas>
       </div>
+
+      {/* Simulation History Modal */}
+      {showHistory && (
+        <SimulationHistory
+          onLoadSimulation={handleLoadSimulation}
+          onCompareSimulations={handleCompareSimulations}
+          onClose={() => setShowHistory(false)}
+        />
+      )}
+
+      {/* Simulation Comparison Modal */}
+      {comparisonMode && comparisonData && comparisonData.mode === 'simulation_comparison' && (
+        <SimulationComparison
+          comparisonData={comparisonData}
+          onClose={() => {
+            setComparisonMode(false)
+            setComparisonData(null)
+          }}
+        />
+      )}
     </div>
   )
 }
