@@ -9,6 +9,7 @@ endif
 # Set default values if not defined in .env
 FRONTEND_PORT ?= 3005
 BACKEND_PORT ?= 8099
+DOCS_PORT ?= 3553
 
 DOCKER_COMPOSE := $(shell command -v docker-compose >/dev/null 2>&1 && echo "docker-compose" || echo "docker compose")
 
@@ -48,6 +49,7 @@ up:
 	@echo "  Frontend: http://localhost:$(FRONTEND_PORT)"
 	@echo "  Backend:  http://localhost:$(BACKEND_PORT)"
 	@echo "  API Docs: http://localhost:$(BACKEND_PORT)/docs"
+	@echo "  Documentation: http://localhost:$(DOCS_PORT)"
 
 down:
 	$(DOCKER_COMPOSE) down
@@ -87,6 +89,7 @@ use-cpu:
 	@echo "VITE_FRONTEND_PORT=$(FRONTEND_PORT)" >> .env
 	@echo "BACKEND_PORT=$(BACKEND_PORT)" >> .env
 	@echo "VITE_BACKEND_PORT=$(BACKEND_PORT)" >> .env
+	@echo "DOCS_PORT=$(DOCS_PORT)" >> .env
 	@echo "CORS_ORIGINS=http://localhost:$(FRONTEND_PORT),http://frontend:$(FRONTEND_PORT)" >> .env
 	@$(DOCKER_COMPOSE) down
 	@$(DOCKER_COMPOSE) build --no-cache --build-arg TORCH_VERSION=cpu
@@ -100,6 +103,7 @@ use-cuda:
 	@echo "VITE_FRONTEND_PORT=$(FRONTEND_PORT)" >> .env
 	@echo "BACKEND_PORT=$(BACKEND_PORT)" >> .env
 	@echo "VITE_BACKEND_PORT=$(BACKEND_PORT)" >> .env
+	@echo "DOCS_PORT=$(DOCS_PORT)" >> .env
 	@echo "CORS_ORIGINS=http://localhost:$(FRONTEND_PORT),http://frontend:$(FRONTEND_PORT)" >> .env
 	@$(DOCKER_COMPOSE) down
 	@$(DOCKER_COMPOSE) build --no-cache --build-arg TORCH_VERSION=cuda
