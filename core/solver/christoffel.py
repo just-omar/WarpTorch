@@ -8,14 +8,14 @@ def get_christoffel_symbols(gu: torch.Tensor, diff_1_gl: torch.Tensor) -> torch.
     """
     Computes all Christoffel symbols Gamma^i_{kl} entirely without loops.
     
-    Formula: Gamma^i_{kl} = 1/2 * g^{im} ( \partial_l g_{mk} + \partial_k g_{ml} - \partial_m g_{kl} )
+    Formula: Gamma^i_{kl} = 1/2 * g^{im} ( \\partial_l g_{mk} + \\partial_k g_{ml} - \\partial_m g_{kl} )
    
     
     Args:
         gu: Inverse metric tensor of shape (4, 4, T, X, Y, Z). Dims: (i, m, ...)
         diff_1_gl: First derivatives of the lower metric tensor.
                    Shape (4, 4, 4, T, X, Y, Z). Dims: (mu, nu, rho, ...)
-                   where diff_1_gl[m, k, l] = \partial_l g_{mk}
+                   where diff_1_gl[m, k, l] = \\partial_l g_{mk}
                    
     Returns:
         Gamma: Christoffel symbols tensor of shape (4, 4, 4, T, X, Y, Z).

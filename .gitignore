@@ -76,4 +76,27 @@ htmlcov/
 node_modules
 ai-context
 
+# Database files
 *.db
+*.sqlite
+*.sqlite3
+
+# Simulation data and outputs
+simulation_data/
+exports/
+*.h5
+*.hdf5
+*.npy
+*.npz
+
+# Memory and context files
+.claude/
+memory/
+
+# Docker
+.dockerignore
+
+# Documentation build
+documentation/build/
+documentation/node_modules/
+documentation/.docusaurus/
