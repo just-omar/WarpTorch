@@ -15,7 +15,6 @@ function App() {
   const [isComparing, setIsComparing] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
   const [comparisonMode, setComparisonMode] = useState(false)
-  const [baseSimulationId, setBaseSimulationId] = useState<number | null>(null)
 
   const [activeParams, setActiveParams] = useState({
     metric: 'alcubierre',

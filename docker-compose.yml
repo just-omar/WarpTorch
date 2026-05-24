@@ -16,6 +16,9 @@ services:
       # Mount core directory for development (comment out for production)
       - ./core:/app/core:ro
       - ./output:/app/output
+      # Persist database and simulation data
+      - ./simulations.db:/app/simulations.db
+      - ./simulation_data:/app/simulation_data
     networks:
       - warptorch-network
     restart: unless-stopped

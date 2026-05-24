@@ -75,3 +75,5 @@ htmlcov/
 
 node_modules
 ai-context
+
+*.db

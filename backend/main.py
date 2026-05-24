@@ -22,8 +22,8 @@ from core.visualizer.slicing import get_2d_slice
 from core.utils import get_best_device
 
 # Import database and storage
-from database import SimulationDatabase, SimulationRecord, get_database
-from storage import SimulationStorage, get_storage
+from backend.database import SimulationDatabase, SimulationRecord, get_database
+from backend.storage import SimulationStorage, get_storage
 
 app = FastAPI(title="WarpTorch API")
 

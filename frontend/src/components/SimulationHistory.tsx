@@ -343,7 +343,7 @@ function SimulationCard({
           <div className="info-row">
             <span className="info-label">Statistics:</span>
             <span className="info-value">
-              [{simulation.statistics.min:.2f}, {simulation.statistics.max:.2f}]
+              [{simulation.statistics.min.toFixed(2)}, {simulation.statistics.max.toFixed(2)}]
             </span>
           </div>
         </div>
