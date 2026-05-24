@@ -49,6 +49,23 @@ services:
       retries: 3
       start_period: 10s
 
+  docs:
+    build:
+      context: ./documentation
+      dockerfile: Dockerfile
+    container_name: warptorch-docs
+    ports:
+      - "${DOCS_PORT:-3553}:3553"
+    networks:
+      - warptorch-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3553/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
 networks:
   warptorch-network:
     driver: bridge
