@@ -13,6 +13,8 @@ load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from core.metrics.alcubierre import get_alcubierre_metric
+from core.metrics.lentz import get_lentz_metric
+from core.metrics.vandenbroeck import get_vandenbroeck_metric
 from core.solver.energy import get_energy_tensor
 from core.solver.autodiff_curvature import get_christoffel_symbols, AutodiffCurvatureSolver
 from core.visualizer.slicing import get_2d_slice
@@ -36,6 +38,22 @@ class AlcubierreParams(BaseModel):
     sigma: float = 4.0
     gridSize: int = 96
     method: str = "finite_diff"  # "finite_diff" or "autodiff"
+
+class LentzParams(BaseModel):
+    velocity: float = 1.5
+    scale: float = 8.0
+    gridSize: int = 96
+    method: str = "finite_diff"
+
+class VanDenBroeckParams(BaseModel):
+    velocity: float = 1.5
+    R1: float = 4.0  # Inner bubble radius
+    sigma1: float = 3.0  # Inner boundary thickness
+    R2: float = 6.0  # Outer bubble radius
+    sigma2: float = 4.0  # Outer boundary thickness
+    A: float = 1.0  # Expansion factor
+    gridSize: int = 96
+    method: str = "finite_diff"
 
 @app.get("/")
 async def root():
@@ -114,6 +132,118 @@ async def simulate_alcubierre(params: AlcubierreParams):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Simulation error: {str(e)}")
 
+@app.post("/api/simulate/lentz")
+async def simulate_lentz(params: LentzParams):
+    try:
+        # Get device for computations
+        device = get_best_device()
+
+        # Create Lentz metric
+        metric_tensor = get_lentz_metric(
+            grid_size=(1, params.gridSize, params.gridSize, params.gridSize),
+            grid_scale=(0.1, 0.5, 0.5, 0.5),
+            world_center=(0.0, params.gridSize // 2, params.gridSize // 2, params.gridSize // 2),
+            v=params.velocity,
+            scale=params.scale,
+            device=device
+        )
+
+        # Compute stress-energy tensor
+        energy_tensor = get_energy_tensor(metric_tensor)
+
+        # Get 2D slice for visualization
+        t00_slice = get_2d_slice(energy_tensor, component=(0, 0), slice_plane='xy')
+
+        # get_2d_slice already returns numpy array, so we use it directly
+        t00_numpy = t00_slice
+
+        # Compute statistics
+        energy_stats = {
+            "min": float(np.min(t00_numpy)),
+            "max": float(np.max(t00_numpy)),
+            "mean": float(np.mean(t00_numpy)),
+            "std": float(np.std(t00_numpy))
+        }
+
+        # Prepare data for transmission (sample for performance)
+        sample_rate = max(1, params.gridSize // 64)  # Max 64x64 points
+        sampled_data = t00_numpy[::sample_rate, ::sample_rate].tolist()
+
+        return {
+            "success": True,
+            "params": params.model_dump(),
+            "statistics": energy_stats,
+            "grid_size": list(t00_numpy.shape),
+            "data": sampled_data,
+            "metadata": {
+                "metric": "Lentz (2021)",
+                "description": "Positive energy warp soliton",
+                "energy_condition": "Positive (satisfies energy conditions)",
+                "method": params.method
+            }
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Simulation error: {str(e)}")
+
+@app.post("/api/simulate/vandenbroeck")
+async def simulate_vandenbroeck(params: VanDenBroeckParams):
+    try:
+        # Get device for computations
+        device = get_best_device()
+
+        # Create Van Den Broeck metric
+        metric_tensor = get_vandenbroeck_metric(
+            grid_size=(1, params.gridSize, params.gridSize, params.gridSize),
+            grid_scale=(0.1, 0.5, 0.5, 0.5),
+            world_center=(0.0, params.gridSize // 2, params.gridSize // 2, params.gridSize // 2),
+            v=params.velocity,
+            R1=params.R1,
+            sigma1=params.sigma1,
+            R2=params.R2,
+            sigma2=params.sigma2,
+            A=params.A,
+            device=device
+        )
+
+        # Compute stress-energy tensor
+        energy_tensor = get_energy_tensor(metric_tensor)
+
+        # Get 2D slice for visualization
+        t00_slice = get_2d_slice(energy_tensor, component=(0, 0), slice_plane='xy')
+
+        # get_2d_slice already returns numpy array, so we use it directly
+        t00_numpy = t00_slice
+
+        # Compute statistics
+        energy_stats = {
+            "min": float(np.min(t00_numpy)),
+            "max": float(np.max(t00_numpy)),
+            "mean": float(np.mean(t00_numpy)),
+            "std": float(np.std(t00_numpy))
+        }
+
+        # Prepare data for transmission (sample for performance)
+        sample_rate = max(1, params.gridSize // 64)  # Max 64x64 points
+        sampled_data = t00_numpy[::sample_rate, ::sample_rate].tolist()
+
+        return {
+            "success": True,
+            "params": params.model_dump(),
+            "statistics": energy_stats,
+            "grid_size": list(t00_numpy.shape),
+            "data": sampled_data,
+            "metadata": {
+                "metric": "Van Den Broeck (1999)",
+                "description": "Microscopic Alcubierre bubble with expanded internal volume",
+                "energy_condition": "Negative (requires exotic matter)",
+                "method": params.method
+            }
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Simulation error: {str(e)}")
+
 @app.get("/api/metrics")
 async def get_metrics():
     return {
@@ -128,7 +258,13 @@ async def get_metrics():
                 "id": "lentz",
                 "name": "Lentz Soliton (2021)",
                 "description": "Positive energy density",
-                "status": "coming_soon"
+                "status": "available"
+            },
+            {
+                "id": "vandenbroeck",
+                "name": "Van Den Broeck (1999)",
+                "description": "Microscopic warp bubble with expanded internal volume",
+                "status": "available"
             },
             {
                 "id": "schwarzschild",

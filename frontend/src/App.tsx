@@ -23,17 +23,38 @@ function App() {
   const handleSimulationStart = async (params: any) => {
     setIsSimulating(true)
     try {
+      // Prepare request body based on metric type
+      let requestBody: any = {
+        gridSize: params.gridSize,
+        method: params.method
+      }
+
+      // Add metric-specific parameters
+      switch (params.metric) {
+        case 'alcubierre':
+          requestBody.velocity = params.velocity
+          requestBody.radius = params.radius
+          requestBody.sigma = params.sigma
+          break
+        case 'lentz':
+          requestBody.velocity = params.velocity
+          requestBody.scale = params.radius // Use radius as scale for UI simplicity
+          break
+        case 'vandenbroeck':
+          requestBody.velocity = params.velocity
+          requestBody.R1 = params.radius * 0.7  // Inner radius
+          requestBody.sigma1 = params.sigma * 0.8  // Inner boundary
+          requestBody.R2 = params.radius  // Outer radius
+          requestBody.sigma2 = params.sigma  // Outer boundary
+          requestBody.A = 1.0  // Expansion factor
+          break
+      }
+
       // Динамический вызов API на основе выбранной метрики
       const response = await fetch(`/api/simulate/${params.metric}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          velocity: params.velocity,
-          radius: params.radius,
-          sigma: params.sigma,
-          gridSize: params.gridSize,
-          method: params.method
-        })
+        body: JSON.stringify(requestBody)
       })
       const data = await response.json()
 
