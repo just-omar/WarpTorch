@@ -23,7 +23,7 @@ const Navbar = ({ onHistoryToggle, showHistory }: NavbarProps) => {
       title: 'Jupyter'
     },
     {
-      url: `http://localhost:${import.meta.env.VITE_DOCS_PORT || '3553'}`,
+      url: 'https://just-omar.github.io/WarpTorch/',
       icon: <SiDocusaurus />,
       color: '#667eea',
       title: 'Documentation'
