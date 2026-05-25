@@ -75,7 +75,7 @@ services:
     ports:
       - "${JUPYTER_PORT:-8888}:8888"
     volumes:
-      # Mount Jupyter notebooks directory
+      # Mount Jupyter notebooks directory with explicit name
       - ./jupyter_notebooks:/home/jovyan/jupyter_notebooks
       # Access simulation data for analysis
       - ./simulation_data:/home/jovyan/simulation_data
