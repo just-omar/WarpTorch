@@ -17,19 +17,19 @@ const Navbar = ({ onHistoryToggle, showHistory }: NavbarProps) => {
       title: 'GitHub'
     },
     {
-      url: 'http://localhost:8888',
+      url: `http://localhost:${import.meta.env.VITE_JUPYTER_PORT || '8888'}`,
       icon: <SiJupyter />,
       color: '#F37626',
       title: 'Jupyter'
     },
     {
-      url: 'http://localhost:3553',
+      url: `http://localhost:${import.meta.env.VITE_DOCS_PORT || '3553'}`,
       icon: <SiDocusaurus />,
       color: '#667eea',
       title: 'Documentation'
     },
     {
-      url: 'http://localhost:8099/docs',
+      url: `http://localhost:${import.meta.env.VITE_BACKEND_PORT || '8099'}/docs`,
       icon: <FiServer />,
       color: '#21a0c4',
       title: 'Backend API'
