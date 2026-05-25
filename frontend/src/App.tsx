@@ -6,7 +6,7 @@ import AxesHelper from './components/AxesHelper'
 import SimulationPanel from './components/SimulationPanel'
 import SimulationHistory from './components/SimulationHistory'
 import SimulationComparison from './components/SimulationComparison'
-import LinksPanel from './components/LinksPanel'
+import Navbar from './components/Navbar'
 import './App.css'
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
   const [isSimulating, setIsSimulating] = useState(false)
   const [isComparing, setIsComparing] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
-  const [showLinks, setShowLinks] = useState(false)
   const [comparisonMode, setComparisonMode] = useState(false)
 
   const [activeParams, setActiveParams] = useState({
@@ -182,23 +181,10 @@ function App() {
 
   return (
     <div className="app">
-      {/* History Button */}
-      <button
-        className="history-toggle-btn"
-        onClick={() => setShowHistory(!showHistory)}
-        title="Simulation History"
-      >
-        📚 History
-      </button>
-
-      {/* Links Button */}
-      <button
-        className="links-toggle-btn"
-        onClick={() => setShowLinks(!showLinks)}
-        title="Quick Links"
-      >
-        🔗 Links
-      </button>
+      <Navbar
+        onHistoryToggle={() => setShowHistory(!showHistory)}
+        showHistory={showHistory}
+      />
 
       <SimulationPanel
         onStart={handleSimulationStart}
@@ -267,11 +253,6 @@ function App() {
             setComparisonData(null)
           }}
         />
-      )}
-
-      {/* Links Panel */}
-      {showLinks && (
-        <LinksPanel onClose={() => setShowLinks(false)} />
       )}
     </div>
   )
