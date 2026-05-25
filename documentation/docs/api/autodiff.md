@@ -38,7 +38,7 @@ solver = AutodiffCurvatureSolver(device=None)  # Auto-detect GPU/CPU
 
 Compute Christoffel symbols of the second kind using exact derivatives.
 
-**Formula:** Γ^α_{βγ} = ½ g^{αδ} (∂_γ g_{δβ} + ∂_β g_{δγ} - ∂_δ g_{βγ})
+**Formula:** Γ^α_βγ = ½ g^αδ (∂_γ g_δβ + ∂_β g_δγ - ∂_δ g_βγ)
 
 **Parameters:**
 - `g_cov` (torch.Tensor): Covariant metric tensor (4, 4, T, X, Y, Z)
@@ -70,7 +70,7 @@ gamma = solver.get_christoffel_symbols_autodiff(metric.tensor, coords)
 
 Compute Ricci tensor using exact derivatives of Christoffel symbols.
 
-**Formula:** R_{μν} = ∂_α Γ^α_{μν} - ∂_ν Γ^α_{μα} + Γ^α_{βα} Γ^β_{μν} - Γ^α_{βν} Γ^β_{μα}
+**Formula:** R_μν = ∂_α Γ^α_μν - ∂_ν Γ^α_μα + Γ^α_βα Γ^β_μν - Γ^α_βν Γ^α_μα
 
 **Parameters:**
 - `g_cov` (torch.Tensor): Covariant metric tensor
@@ -90,7 +90,7 @@ kretschmann = compute_kretschmann_scalar(ricci, metric)
 
 ##### `get_ricci_scalar_autodiff(g_cov, coords)`
 
-Compute Ricci scalar R = g^{μν} R_{μν} using autodiff.
+Compute Ricci scalar R = g^μν R_μν using autodiff.
 
 **Parameters:**
 - `g_cov` (torch.Tensor): Covariant metric tensor
@@ -325,4 +325,3 @@ validate_autodiff_accuracy()
 
 - [PyTorch Autograd Documentation](https://pytorch.org/docs/stable/autograd.html)
 - [Automatic Differentiation in Machine Learning](https://arxiv.org/abs/1502.05767)
-- [WarpTorch Numerical Methods Paper](/papers/warptorch-numerical-methods.pdf)
