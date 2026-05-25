@@ -14,7 +14,7 @@ services:
       - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:${FRONTEND_PORT:-3005},http://frontend:${FRONTEND_PORT:-3005}}
     volumes:
       # Mount core directory for development (comment out for production)
-      - ./core:/app/core:ro
+      - ./core:/app/core
       - ./output:/app/output
       # Persist database and simulation data
       - ./simulations.db:/app/simulations.db
@@ -82,8 +82,8 @@ services:
       - ./output:/home/jovyan/output
       # Access database for results analysis
       - ./simulations.db:/home/jovyan/simulations.db
-      # Optional: read-only access to core code for reference
-      - ./core:/home/jovyan/core:ro
+      # Full access to core code for contributors to modify
+      - ./core:/home/jovyan/core
     environment:
       - JUPYTER_TOKEN=${JUPYTER_TOKEN:-warptorch}
       - JUPYTER_ENABLE_LAB=yes
