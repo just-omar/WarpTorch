@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://warptorch.org/blog</id>
+    <title>WarpTorch Documentation Blog</title>
+    <updated>2024-05-23T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://warptorch.org/blog"/>
+    <subtitle>WarpTorch Documentation Blog</subtitle>
+    <icon>https://warptorch.org/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Contributing to WarpTorch: A Guide]]></title>
+        <id>https://warptorch.org/blog/collaboration-guide</id>
+        <link href="https://warptorch.org/blog/collaboration-guide"/>
+        <updated>2024-05-23T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We're excited to welcome contributions from the community! This guide will help you get started with contributing to WarpTorch.]]></summary>
+        <content type="html"><![CDATA[<p>We're excited to welcome contributions from the community! This guide will help you get started with contributing to WarpTorch.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-contribute">Why Contribute?<a href="https://warptorch.org/blog/collaboration-guide#why-contribute" class="hash-link" aria-label="Direct link to Why Contribute?" title="Direct link to Why Contribute?" translate="no">​</a></h2>
+<p>WarpTorch is a community-driven project focused on making GPU-accelerated general relativity simulations accessible to everyone. Whether you're a physicist, developer, or enthusiast, your contributions matter!</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ways-to-contribute">Ways to Contribute<a href="https://warptorch.org/blog/collaboration-guide#ways-to-contribute" class="hash-link" aria-label="Direct link to Ways to Contribute" title="Direct link to Ways to Contribute" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="code-contributions">Code Contributions<a href="https://warptorch.org/blog/collaboration-guide#code-contributions" class="hash-link" aria-label="Direct link to Code Contributions" title="Direct link to Code Contributions" translate="no">​</a></h3>
+<ul>
+<li class="">Fix bugs and implement new features</li>
+<li class="">Optimize existing CUDA kernels</li>
+<li class="">Add support for new spacetime metrics</li>
+<li class="">Improve documentation</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="research--science">Research &amp; Science<a href="https://warptorch.org/blog/collaboration-guide#research--science" class="hash-link" aria-label="Direct link to Research &amp; Science" title="Direct link to Research &amp; Science" translate="no">​</a></h3>
+<ul>
+<li class="">Contribute novel warp drive metrics</li>
+<li class="">Share simulation results</li>
+<li class="">Write physics tutorials</li>
+<li class="">Validate numerical methods</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="community">Community<a href="https://warptorch.org/blog/collaboration-guide#community" class="hash-link" aria-label="Direct link to Community" title="Direct link to Community" translate="no">​</a></h3>
+<ul>
+<li class="">Help new users on GitHub Issues</li>
+<li class="">Write blog posts about your projects</li>
+<li class="">Share WarpTorch on social media</li>
+<li class="">Organize study groups</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="getting-started">Getting Started<a href="https://warptorch.org/blog/collaboration-guide#getting-started" class="hash-link" aria-label="Direct link to Getting Started" title="Direct link to Getting Started" translate="no">​</a></h2>
+<ol>
+<li class=""><strong>Fork the repository</strong> on GitHub</li>
+<li class=""><strong>Clone your fork</strong>: <code>git clone https://github.com/YOUR_USERNAME/WarpTorch</code></li>
+<li class=""><strong>Create a branch</strong>: <code>git checkout -b feature/my-feature</code></li>
+<li class=""><strong>Make your changes</strong> and test thoroughly</li>
+<li class=""><strong>Submit a pull request</strong> with a clear description</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="coding-standards">Coding Standards<a href="https://warptorch.org/blog/collaboration-guide#coding-standards" class="hash-link" aria-label="Direct link to Coding Standards" title="Direct link to Coding Standards" translate="no">​</a></h2>
+<ul>
+<li class="">Follow the existing code style</li>
+<li class="">Add docstrings to new functions</li>
+<li class="">Include tests for new features</li>
+<li class="">Update relevant documentation</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-were-looking-for">What We're Looking For<a href="https://warptorch.org/blog/collaboration-guide#what-were-looking-for" class="hash-link" aria-label="Direct link to What We're Looking For" title="Direct link to What We're Looking For" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="high-priority">High Priority<a href="https://warptorch.org/blog/collaboration-guide#high-priority" class="hash-link" aria-label="Direct link to High Priority" title="Direct link to High Priority" translate="no">​</a></h3>
+<ul>
+<li class="">Performance optimizations for CUDA kernels</li>
+<li class="">Additional spacetime metrics</li>
+<li class="">Better error handling and validation</li>
+<li class="">Improved test coverage</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="medium-priority">Medium Priority<a href="https://warptorch.org/blog/collaboration-guide#medium-priority" class="hash-link" aria-label="Direct link to Medium Priority" title="Direct link to Medium Priority" translate="no">​</a></h3>
+<ul>
+<li class="">Documentation improvements</li>
+<li class="">Bug fixes</li>
+<li class="">UI/UX enhancements</li>
+<li class="">Example notebooks</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="nice-to-have">Nice to Have<a href="https://warptorch.org/blog/collaboration-guide#nice-to-have" class="hash-link" aria-label="Direct link to Nice to Have" title="Direct link to Nice to Have" translate="no">​</a></h3>
+<ul>
+<li class="">New visualization features</li>
+<li class="">Additional export formats</li>
+<li class="">Integration with other physics libraries</li>
+<li class="">Multi-language support</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="recognition">Recognition<a href="https://warptorch.org/blog/collaboration-guide#recognition" class="hash-link" aria-label="Direct link to Recognition" title="Direct link to Recognition" translate="no">​</a></h2>
+<p>All contributors are:</p>
+<ul>
+<li class="">Listed in our contributors section</li>
+<li class="">Mentioned in release notes</li>
+<li class="">Eligible for contributor badges</li>
+<li class="">Part of our decision-making process</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="join-the-team">Join the Team<a href="https://warptorch.org/blog/collaboration-guide#join-the-team" class="hash-link" aria-label="Direct link to Join the Team" title="Direct link to Join the Team" translate="no">​</a></h2>
+<p>Active contributors may be invited to join the core team! Core team members have:</p>
+<ul>
+<li class="">Write access to the repository</li>
+<li class="">Voting rights on project decisions</li>
+<li class="">Official contributor status</li>
+<li class="">Access to development resources</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="resources">Resources<a href="https://warptorch.org/blog/collaboration-guide#resources" class="hash-link" aria-label="Direct link to Resources" title="Direct link to Resources" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>GitHub</strong>: <a href="https://github.com/just-omar/WarpTorch" target="_blank" rel="noopener noreferrer" class="">https://github.com/just-omar/WarpTorch</a></li>
+<li class=""><strong>Issues</strong>: Report bugs and request features</li>
+<li class=""><strong>Discussions</strong>: Ask questions and share ideas</li>
+<li class=""><strong>Documentation</strong>: <a href="https://warptorch.org/" target="_blank" rel="noopener noreferrer" class="">https://warptorch.org</a></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="next-steps">Next Steps<a href="https://warptorch.org/blog/collaboration-guide#next-steps" class="hash-link" aria-label="Direct link to Next Steps" title="Direct link to Next Steps" translate="no">​</a></h2>
+<p>Ready to contribute? Check out our <a href="https://github.com/just-omar/WarpTorch/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22" target="_blank" rel="noopener noreferrer" class="">good first issues</a> or start with the <a class="" href="https://warptorch.org/docs/intro">documentation</a>!</p>
+<hr>
+<p><em>This guide will be updated as the project grows. Have suggestions? Open an issue or PR!</em></p>]]></content>
+        <author>
+            <name>Omar</name>
+            <email>omar@warptorch.org</email>
+            <uri>https://github.com/just-omar</uri>
+        </author>
+        <category label="community" term="community"/>
+        <category label="contribution" term="contribution"/>
+        <category label="guide" term="guide"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Welcome to WarpTorch Documentation]]></title>
+        <id>https://warptorch.org/blog/welcome</id>
+        <link href="https://warptorch.org/blog/welcome"/>
+        <updated>2024-05-23T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Welcome to the official WarpTorch documentation! This blog will keep you updated with the latest developments, tutorials, and research in GPU-accelerated general relativity simulations.]]></summary>
+        <content type="html"><![CDATA[<p>Welcome to the official WarpTorch documentation! This blog will keep you updated with the latest developments, tutorials, and research in GPU-accelerated general relativity simulations.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-warptorch">What is WarpTorch?<a href="https://warptorch.org/blog/welcome#what-is-warptorch" class="hash-link" aria-label="Direct link to What is WarpTorch?" title="Direct link to What is WarpTorch?" translate="no">​</a></h2>
+<p>WarpTorch is a high-performance, GPU-accelerated General Relativity toolkit designed for simulating, analyzing, and visualizing warp drive spacetimes. By porting and optimizing numerical relativity methods to modern PyTorch, we enable physicists and enthusiasts to solve Einstein's field equations at unprecedented speeds.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="key-features">Key Features<a href="https://warptorch.org/blog/welcome#key-features" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Massive Acceleration</strong>: GPU-accelerated tensor computations with CUDA, ROCm, and Intel Arc support</li>
+<li class=""><strong>Comprehensive Library</strong>: Vectorized implementations of classical and novel warp metrics</li>
+<li class=""><strong>Advanced Solvers</strong>: 4th-order finite difference stencils for Einstein's field equations</li>
+<li class=""><strong>Web-Ready Export</strong>: JSON exporters for WebGL frontend integration</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="getting-started">Getting Started<a href="https://warptorch.org/blog/welcome#getting-started" class="hash-link" aria-label="Direct link to Getting Started" title="Direct link to Getting Started" translate="no">​</a></h2>
+<p>Check out our <a class="" href="https://warptorch.org/docs/installation">installation guide</a> to get started with WarpTorch. Whether you prefer interactive 3D visualization in your browser or direct Python programming in Jupyter Lab, we have you covered.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="stay-tuned">Stay Tuned<a href="https://warptorch.org/blog/welcome#stay-tuned" class="hash-link" aria-label="Direct link to Stay Tuned" title="Direct link to Stay Tuned" translate="no">​</a></h2>
+<p>Follow this blog for:</p>
+<ul>
+<li class=""><strong>Tutorials</strong>: Step-by-step guides for warp drive simulations</li>
+<li class=""><strong>Research Updates</strong>: Latest developments in warp drive physics</li>
+<li class=""><strong>Performance Tips</strong>: Optimize your simulations for maximum speed</li>
+<li class=""><strong>Community Highlights</strong>: Interesting projects from the WarpTorch community</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="join-the-community">Join the Community<a href="https://warptorch.org/blog/welcome#join-the-community" class="hash-link" aria-label="Direct link to Join the Community" title="Direct link to Join the Community" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>GitHub</strong>: <a href="https://github.com/just-omar/WarpTorch" target="_blank" rel="noopener noreferrer" class="">https://github.com/just-omar/WarpTorch</a></li>
+<li class=""><strong>Issues</strong>: Report bugs and request features</li>
+<li class=""><strong>Contributions</strong>: We welcome contributions from the community</li>
+</ul>
+<p>Welcome aboard the WarpTorch project! 🚀</p>]]></content>
+        <author>
+            <name>Omar</name>
+            <email>omar@warptorch.org</email>
+            <uri>https://github.com/just-omar</uri>
+        </author>
+        <category label="announcement" term="announcement"/>
+        <category label="warptorch" term="warptorch"/>
+        <category label="release" term="release"/>
+    </entry>
+</feed>
