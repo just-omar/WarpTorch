@@ -6,6 +6,7 @@ ENV/
 
 CLAUDE.md
 PLAN.md
+BLAH.md
 
 # Environment variables
 .env
