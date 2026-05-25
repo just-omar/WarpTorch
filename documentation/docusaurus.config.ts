@@ -6,8 +6,8 @@ const config: Config = {
   tagline: 'GPU-accelerated General Relativity toolkit',
   favicon: 'img/favicon.ico',
 
-  url: 'https://warptorch.org',
-  baseUrl: '/',
+  url: 'https://just-omar.github.io',
+  baseUrl: '/WarpTorch/',
 
   organizationName: 'just-omar',
   projectName: 'WarpTorch',
