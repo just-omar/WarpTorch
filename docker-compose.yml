@@ -69,6 +69,34 @@ services:
       retries: 3
       start_period: 40s
 
+  jupyter:
+    image: jupyter/datascience-notebook:latest
+    container_name: warptorch-jupyter
+    ports:
+      - "${JUPYTER_PORT:-8888}:8888"
+    volumes:
+      # Mount work directory for notebooks and analysis
+      - ./work:/home/jovyan/work
+      # Access simulation data for analysis
+      - ./simulation_data:/home/jovyan/simulation_data
+      - ./output:/home/jovyan/output
+      # Access database for results analysis
+      - ./simulations.db:/home/jovyan/simulations.db
+      # Optional: read-only access to core code for reference
+      - ./core:/home/jovyan/core:ro
+    environment:
+      - JUPYTER_TOKEN=${JUPYTER_TOKEN:-warptorch}
+      - JUPYTER_ENABLE_LAB=yes
+    networks:
+      - warptorch-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8888/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
 networks:
   warptorch-network:
     driver: bridge
