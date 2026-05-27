@@ -23,7 +23,7 @@ WarpTorch is a high-performance, GPU-accelerated General Relativity toolkit desi
 
 ## Getting Started
 
-Check out our [installation guide](/docs/installation) to get started with WarpTorch. Whether you prefer interactive 3D visualization in your browser or direct Python programming in Jupyter Lab, we have you covered.
+Check out our [quick start guide](/docs/quick-start) to get started with WarpTorch. Whether you prefer interactive 3D visualization in your browser or direct Python programming in Jupyter Lab, we have you covered.
 
 ## Stay Tuned
 

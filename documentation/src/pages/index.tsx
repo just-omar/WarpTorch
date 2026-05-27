@@ -30,7 +30,7 @@ export default function Home(): JSX.Element {
               Get Started
             </Link>
             <Link
-              to="/docs/installation"
+              to="/docs/quick-start"
               style={{
                 padding: '1rem 2rem',
                 backgroundColor: '#25c2a0',
@@ -39,7 +39,7 @@ export default function Home(): JSX.Element {
                 borderRadius: '8px',
                 fontWeight: 'bold'
               }}>
-              Installation
+              Quick Start
             </Link>
           </div>
 
@@ -56,14 +56,14 @@ export default function Home(): JSX.Element {
           <div style={{ marginTop: '3rem' }}>
             <h2>Quick Links</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginTop: '1.5rem' }}>
-              <Link to="/docs/core-concepts/metrics" style={{ padding: '1rem', border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', textDecoration: 'none', color: 'inherit' }}>
-                <strong>Core Concepts</strong><br />Learn about warp metrics
+              <Link to="/docs/api/metrics" style={{ padding: '1rem', border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', textDecoration: 'none', color: 'inherit' }}>
+                <strong>API Reference</strong><br />Explore warp metrics
               </Link>
               <Link to="/docs/api/metrics" style={{ padding: '1rem', border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', textDecoration: 'none', color: 'inherit' }}>
                 <strong>API Reference</strong><br />Explore the API
               </Link>
-              <Link to="/docs/tutorials/alcubierre-simulation" style={{ padding: '1rem', border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', textDecoration: 'none', color: 'inherit' }}>
-                <strong>Tutorials</strong><br />Step-by-step guides
+              <Link to="/docs/quick-start" style={{ padding: '1rem', border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', textDecoration: 'none', color: 'inherit' }}>
+                <strong>Quick Start</strong><br />Get started quickly
               </Link>
               <Link to="/blog" style={{ padding: '1rem', border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', textDecoration: 'none', color: 'inherit' }}>
                 <strong>Blog</strong><br />Latest updates
