@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwarptorch_docs=globalThis.webpackChunkwarptorch_docs||[]).push([[512],{8731(o){o.exports=JSON.parse('{"metadata":{"permalink":"/WarpTorch/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

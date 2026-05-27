@@ -128,7 +128,7 @@
 <li class=""><strong>Web-Ready Export</strong>: JSON exporters for WebGL frontend integration</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="getting-started">Getting Started<a href="https://just-omar.github.io/WarpTorch/blog/welcome#getting-started" class="hash-link" aria-label="Direct link to Getting Started" title="Direct link to Getting Started" translate="no">​</a></h2>
-<p>Check out our <a class="" href="https://just-omar.github.io/WarpTorch/docs/installation">installation guide</a> to get started with WarpTorch. Whether you prefer interactive 3D visualization in your browser or direct Python programming in Jupyter Lab, we have you covered.</p>
+<p>Check out our <a class="" href="https://just-omar.github.io/WarpTorch/docs/quick-start">quick start guide</a> to get started with WarpTorch. Whether you prefer interactive 3D visualization in your browser or direct Python programming in Jupyter Lab, we have you covered.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="stay-tuned">Stay Tuned<a href="https://just-omar.github.io/WarpTorch/blog/welcome#stay-tuned" class="hash-link" aria-label="Direct link to Stay Tuned" title="Direct link to Stay Tuned" translate="no">​</a></h2>
 <p>Follow this blog for:</p>
 <ul>
