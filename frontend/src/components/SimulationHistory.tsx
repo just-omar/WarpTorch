@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import './SimulationHistory.css'
 
 interface SimulationRecord {
   id: number
@@ -165,7 +164,7 @@ export default function SimulationHistory({
     return Array.from({ length: 5 }, (_, i) => (
       <span
         key={i}
-        className={`star ${i < rating ? 'filled' : ''}`}
+        className={i < rating ? 'text-yellow-400 text-base' : 'text-gray-600 text-base'}
       >
         ★
       </span>
@@ -174,32 +173,32 @@ export default function SimulationHistory({
 
   if (loading) {
     return (
-      <div className="simulation-history-overlay">
-        <div className="simulation-history-modal">
-          <div className="simulation-history-header">
-            <h2>Simulation History</h2>
-            <button onClick={onClose} className="close-btn">×</button>
+      <div className="fixed inset-0 bg-black/80 flex justify-center items-center z-[1000]">
+        <div className="bg-[#1a1a2e] border border-[#333] rounded-lg w-[90%] max-w-[1200px] h-[90vh] flex flex-col shadow-2xl">
+          <div className="flex justify-between items-center p-5 border-b border-[#333] bg-[#16213e]">
+            <h2 className="text-rose-500 text-2xl">Simulation History</h2>
+            <button onClick={onClose} className="bg-transparent border-0 text-white text-3xl cursor-pointer p-0 w-10 h-10 flex items-center justify-center rounded transition-colors hover:bg-rose-500">×</button>
           </div>
-          <div className="loading">Loading simulations...</div>
+          <div className="text-center p-10 text-gray-300 text-lg">Loading simulations...</div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="simulation-history-overlay">
-      <div className="simulation-history-modal">
-        <div className="simulation-history-header">
-          <h2>📚 Simulation History</h2>
-          <button onClick={onClose} className="close-btn">×</button>
+    <div className="fixed inset-0 bg-black/80 flex justify-center items-center z-[1000]">
+      <div className="bg-[#1a1a2e] border border-[#333] rounded-lg w-[90%] max-w-[1200px] h-[90vh] flex flex-col shadow-2xl">
+        <div className="flex justify-between items-center p-5 border-b border-[#333] bg-[#16213e]">
+          <h2 className="text-rose-500 text-2xl">📚 Simulation History</h2>
+          <button onClick={onClose} className="bg-transparent border-0 text-white text-3xl cursor-pointer p-0 w-10 h-10 flex items-center justify-center rounded transition-colors hover:bg-rose-500">×</button>
         </div>
 
         {/* Filters */}
-        <div className="simulation-history-filters">
+        <div className="flex gap-3 p-5 border-b border-[#333] bg-[#1a1a2e]">
           <select
             value={filterMetric}
             onChange={(e) => setFilterMetric(e.target.value)}
-            className="filter-select"
+            className="p-2 px-3 bg-[#0f3460] border border-[#333] rounded text-white text-sm cursor-pointer focus:outline-none focus:border-rose-500"
           >
             <option value="all">All Metrics</option>
             <option value="alcubierre">Alcubierre</option>
@@ -212,13 +211,13 @@ export default function SimulationHistory({
             placeholder="Search tags, notes, params..."
             value={filterSearch}
             onChange={(e) => setFilterSearch(e.target.value)}
-            className="filter-search"
+            className="flex-1 p-2 px-3 bg-[#0f3460] border border-[#333] rounded text-white text-sm focus:outline-none focus:border-rose-500"
           />
 
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
-            className="filter-select"
+            className="p-2 px-3 bg-[#0f3460] border border-[#333] rounded text-white text-sm cursor-pointer focus:outline-none focus:border-rose-500"
           >
             <option value="timestamp">Sort by Date</option>
             <option value="rating">Sort by Rating</option>
@@ -226,15 +225,15 @@ export default function SimulationHistory({
         </div>
 
         {/* Statistics */}
-        <div className="simulation-history-stats">
+        <div className="flex gap-5 px-5 py-3 bg-[#16213e] text-gray-300 text-sm border-b border-[#333]">
           <span>Total: {filteredSimulations.length} simulations</span>
           <span>Top rated: {filteredSimulations.filter(s => s.rating > 0).length}</span>
         </div>
 
         {/* Simulation List */}
-        <div className="simulation-history-list">
+        <div className="flex-1 overflow-y-auto p-5 grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-4 align-content-start [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-[#1a1a2e] [&::-webkit-scrollbar-thumb]:bg-[#333] [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb:hover]:bg-rose-500">
           {filteredSimulations.length === 0 ? (
-            <div className="no-simulations">
+            <div className="text-center py-16 px-5 text-gray-500 text-base col-[1/-1]">
               No simulations found. Start your first simulation!
             </div>
           ) : (
@@ -306,92 +305,92 @@ function SimulationCard({
 
   return (
     <div
-      className={`simulation-card ${isSelected ? 'selected' : ''}`}
+      className={`bg-[#16213e] border border-[#333] rounded-lg p-4 cursor-pointer transition-all hover:border-rose-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-rose-500/20 ${isSelected ? 'border-rose-500 bg-[#1a1a2e] shadow-lg shadow-rose-500/30' : ''}`}
       onClick={onSelect}
     >
-      <div className="simulation-card-header">
-        <div className="simulation-title">
-          <h3>{getMetricTypeLabel(simulation.metric_type)}</h3>
-          <span className="simulation-id">#{simulation.id}</span>
+      <div className="flex justify-between items-start mb-3">
+        <div className="flex-1">
+          <h3 className="text-white text-base font-semibold m-0">{getMetricTypeLabel(simulation.metric_type)}</h3>
+          <span className="inline-block bg-[#0f3460] text-rose-500 px-2 py-0.5 rounded text-xs font-semibold ml-2">#{simulation.id}</span>
         </div>
-        <div className="simulation-rating">
+        <div className="flex gap-0.5">
           {renderStars(editRating)}
         </div>
       </div>
 
-      <div className="simulation-card-body">
-        <div className="simulation-info">
-          <div className="info-row">
-            <span className="info-label">Date:</span>
-            <span className="info-value">
+      <div className="mb-3">
+        <div className="flex flex-col gap-1.5 mb-3">
+          <div className="flex justify-between items-center text-xs">
+            <span className="text-gray-500 font-medium">Date:</span>
+            <span className="text-gray-300">
               {new Date(simulation.timestamp).toLocaleString()}
             </span>
           </div>
 
-          <div className="info-row">
-            <span className="info-label">Method:</span>
-            <span className="info-value">{simulation.method}</span>
+          <div className="flex justify-between items-center text-xs">
+            <span className="text-gray-500 font-medium">Method:</span>
+            <span className="text-gray-300">{simulation.method}</span>
           </div>
 
-          <div className="info-row">
-            <span className="info-label">Energy:</span>
-            <span className={`info-value ${simulation.energy_condition.includes('Negative') ? 'negative' : 'positive'}`}>
+          <div className="flex justify-between items-center text-xs">
+            <span className="text-gray-500 font-medium">Energy:</span>
+            <span className={simulation.energy_condition.includes('Negative') ? 'text-rose-500 font-semibold' : 'text-green-400 font-semibold'}>
               {simulation.energy_condition}
             </span>
           </div>
 
-          <div className="info-row">
-            <span className="info-label">Statistics:</span>
-            <span className="info-value">
+          <div className="flex justify-between items-center text-xs">
+            <span className="text-gray-500 font-medium">Statistics:</span>
+            <span className="text-gray-300">
               [{simulation.statistics.min.toFixed(2)}, {simulation.statistics.max.toFixed(2)}]
             </span>
           </div>
         </div>
 
         {isEditing ? (
-          <div className="simulation-edit">
+          <div className="flex flex-col gap-3">
             <textarea
               value={editNotes}
               onChange={(e) => setEditNotes(e.target.value)}
               placeholder="Add notes about this simulation..."
-              className="edit-notes"
+              className="w-full min-h-20 p-2 bg-[#0f3460] border border-[#333] rounded text-white font-normal resize-y focus:outline-none focus:border-rose-500"
             />
             <input
               type="text"
               value={editTags}
               onChange={(e) => setEditTags(e.target.value)}
               placeholder="Tags (comma separated)"
-              className="edit-tags"
+              className="w-full p-2 bg-[#0f3460] border border-[#333] rounded text-white focus:outline-none focus:border-rose-500"
             />
-            <div className="edit-rating">
+            <div className="flex items-center gap-2 text-gray-300 text-xs">
               <span>Rating:</span>
               {[1, 2, 3, 4, 5].map(star => (
                 <button
                   key={star}
                   onClick={() => setEditRating(star)}
-                  className={`star-btn ${star <= editRating ? 'active' : ''}`}
+                  className={`bg-transparent border-0 text-lg cursor-pointer p-0 transition-transform hover:scale-110 ${star <= editRating ? 'text-yellow-400' : 'text-gray-600'}`}
                 >
                   ★
                 </button>
               ))}
             </div>
-            <div className="edit-actions">
-              <button onClick={handleSave} className="save-btn">Save</button>
-              <button onClick={handleCancel} className="cancel-btn">Cancel</button>
+            <div className="flex gap-2">
+              <button onClick={handleSave} className="flex-1 py-2 border-0 rounded text-xs font-semibold cursor-pointer transition-all bg-green-400 text-black hover:bg-green-500">Save</button>
+              <button onClick={handleCancel} className="flex-1 py-2 border-0 rounded text-xs font-semibold cursor-pointer transition-all bg-rose-500 text-white hover:bg-rose-600">Cancel</button>
             </div>
           </div>
         ) : (
-          <div className="simulation-details">
+          <div className="text-xs text-gray-400">
             {simulation.notes && (
-              <div className="simulation-notes">
+              <div className="mb-2 leading-relaxed">
                 <strong>Notes:</strong> {simulation.notes}
               </div>
             )}
             {simulation.tags && (
-              <div className="simulation-tags">
+              <div className="flex flex-wrap gap-1 items-center">
                 <strong>Tags:</strong>
                 {simulation.tags.split(',').map((tag, i) => (
-                  <span key={i} className="tag">{tag.trim()}</span>
+                  <span key={i} className="bg-[#0f3460] text-rose-500 px-2 py-0.5 rounded text-xs font-medium">{tag.trim()}</span>
                 ))}
               </div>
             )}
@@ -399,33 +398,33 @@ function SimulationCard({
         )}
       </div>
 
-      <div className="simulation-card-actions">
-        <button onClick={onLoad} className="action-btn load-btn">
+      <div className="flex gap-1.5 pt-3 border-t border-[#333]">
+        <button onClick={onLoad} className="flex-1 py-1.5 px-2 border border-[#333] rounded bg-green-400 text-black text-xs font-semibold cursor-pointer transition-all hover:bg-green-500 hover:border-green-500">
           📥 Load
         </button>
         <button
           onClick={onCompare}
-          className="action-btn compare-btn"
+          className="flex-1 py-1.5 px-2 border border-[#333] rounded bg-[#0f3460] text-white text-xs cursor-pointer transition-all hover:bg-rose-500 hover:border-rose-500 disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={!isSelected}
         >
           ⚖️ Compare
         </button>
         <button
           onClick={() => setIsEditing(!isEditing)}
-          className="action-btn edit-btn"
+          className="flex-1 py-1.5 px-2 border border-[#333] rounded bg-[#0f3460] text-white text-xs cursor-pointer transition-all hover:bg-rose-500 hover:border-rose-500"
         >
           {isEditing ? '✖️' : '✏️ Edit'}
         </button>
         <button
           onClick={() => onExport('json')}
-          className="action-btn export-btn"
+          className="flex-1 py-1.5 px-2 border border-[#333] rounded bg-[#0f3460] text-white text-xs cursor-pointer transition-all hover:bg-rose-500 hover:border-rose-500"
           title="Export as JSON"
         >
           📤
         </button>
         <button
           onClick={onDelete}
-          className="action-btn delete-btn"
+          className="flex-1 py-1.5 px-2 border border-[#333] rounded bg-[#0f3460] text-white text-xs cursor-pointer transition-all hover:bg-rose-500 hover:border-rose-500"
           title="Delete simulation"
         >
           🗑️

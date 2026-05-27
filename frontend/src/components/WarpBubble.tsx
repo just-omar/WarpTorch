@@ -1,4 +1,4 @@
-import { useRef, useMemo, useEffect } from 'react'
+import { useRef, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -20,44 +20,33 @@ function WarpBubble({ data, metric, velocity, radius, sigma }: WarpBubbleProps) 
 
   const spacetimeSheet = useMemo(() => {
     const geometry = new THREE.PlaneGeometry(60, 60, 150, 150) // Сделали сетку еще плотнее и больше
-    geometry.rotateX(-Math.PI / 2) 
+    geometry.rotateX(-Math.PI / 2)
     return {
       geometry,
       originalPositions: new Float32Array(geometry.attributes.position.array)
     }
   }, [])
 
-  const targetCoreColor = useMemo(() => new THREE.Color("#00ffff"), [])
-  const targetShellColor = useMemo(() => new THREE.Color("#00aaff"), [])
+  // Direct red colors using Tailwind color palette
+  const targetCoreColor = useMemo(() => {
+    const color = new THREE.Color("#ff0000") // Pure red for core
+    console.log('Core color set to:', color.getStyle())
+    return color
+  }, [])
 
-  useEffect(() => {
-    if (data && data.statistics) {
-      if (metric === 'lentz') {
-        // У Ленца положительная энергия. Делаем зелено-желтым.
-        const maxEnergy = data.statistics.max || 1
-        const intensity = Math.min(1, maxEnergy / 5)
-        targetCoreColor.setHSL(0.3 - (intensity * 0.1), 1, 0.5) // от циана к зеленому/желтому
-        targetShellColor.setHSL(0.3 - (intensity * 0.1), 1, 0.3)
-      } else {
-        // У Алькубьерре/Ван Ден Брука отрицательная. Делаем угрожающе красно-фиолетовым.
-        const minEnergy = data.statistics.min || -1
-        const intensity = Math.min(1, Math.abs(minEnergy) / 5)
-        targetCoreColor.setHSL(0.8 - (intensity * 0.8), 1, 0.6)
-        targetShellColor.setHSL(0.8 - (intensity * 0.8), 1, 0.3)
-      }
-    } else {
-      targetCoreColor.set("#00ffff")
-      targetShellColor.set("#00aaff")
-    }
-  }, [data, metric, targetCoreColor, targetShellColor])
+  const targetShellColor = useMemo(() => {
+    const color = new THREE.Color("#cc0000") // Dark red for shell
+    console.log('Shell color set to:', color.getStyle())
+    return color
+  }, [])
 
   useFrame((state) => {
     current.current.radius = THREE.MathUtils.lerp(current.current.radius, radius, 0.05)
     current.current.sigma = THREE.MathUtils.lerp(current.current.sigma, sigma, 0.05)
     current.current.velocity = THREE.MathUtils.lerp(current.current.velocity, velocity, 0.05)
 
-    if (coreMaterialRef.current) coreMaterialRef.current.color.lerp(targetCoreColor, 0.05)
-    if (shellMaterialRef.current) shellMaterialRef.current.color.lerp(targetShellColor, 0.05)
+    if (coreMaterialRef.current) coreMaterialRef.current.color.set(targetCoreColor)
+    if (shellMaterialRef.current) shellMaterialRef.current.color.set(targetShellColor)
 
     if (!planeRef.current) return
 
@@ -133,7 +122,7 @@ function WarpBubble({ data, metric, velocity, radius, sigma }: WarpBubbleProps) 
     <group>
       <mesh ref={planeRef} geometry={spacetimeSheet.geometry}>
         <meshBasicMaterial
-          color="#0055aa"
+          color="#ff3333"
           wireframe
           transparent
           opacity={0.4}
@@ -145,17 +134,19 @@ function WarpBubble({ data, metric, velocity, radius, sigma }: WarpBubbleProps) 
           <sphereGeometry args={[1, 32, 32]} />
           <meshBasicMaterial
             ref={shellMaterialRef}
+            color="#ff0000"
             wireframe
             transparent
-            opacity={0.2}
+            opacity={0.6}
           />
         </mesh>
         <mesh>
           <sphereGeometry args={[0.7, 16, 16]} />
           <meshBasicMaterial
             ref={coreMaterialRef}
+            color="#ff3333"
             transparent
-            opacity={0.5}
+            opacity={0.9}
             wireframe
           />
         </mesh>
