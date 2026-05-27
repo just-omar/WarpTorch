@@ -36,13 +36,15 @@ help:
 
 up:
 	@echo "🐳 Building Docker images..."
-	@if python detect_hardware.py | grep -q "NVIDIA"; then \
+	@if python3 detect_hardware.py | grep -q "NVIDIA"; then \
 		echo "NVIDIA GPU detected - building CUDA version..."; \
 		$(DOCKER_COMPOSE) build --build-arg TORCH_VERSION=cuda; \
 	else \
 		echo "Building CPU-only version..."; \
 		$(DOCKER_COMPOSE) build --build-arg TORCH_VERSION=cpu; \
 	fi
+	@echo "🔧 Fixing Jupyter permissions..."
+	@chmod 777 jupyter_notebooks/ 2>/dev/null || echo "jupyter_notebooks/ not found, will be created by Docker"
 	@echo "🚀 Starting services..."
 	$(DOCKER_COMPOSE) up -d
 	@echo "✓ Services started!"
@@ -66,7 +68,7 @@ clean:
 
 build:
 	@echo "🔍 Detecting hardware..."
-	@if python detect_hardware.py | grep -q "NVIDIA"; then \
+	@if python3 detect_hardware.py | grep -q "NVIDIA"; then \
 		echo "Building with CUDA support..."; \
 		$(DOCKER_COMPOSE) build --build-arg TORCH_VERSION=cuda; \
 	else \

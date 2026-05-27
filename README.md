@@ -345,6 +345,20 @@ make use-cuda  # Switch to CUDA version (large, ~2-5GB)
 
 **⚠️ Note:** Native installation (Methods A & B above) is recommended for most users - simpler setup and better performance.
 
+**🐳 Jupyter Notebooks Permissions Fix:**
+
+If you encounter "Permission denied" errors when creating new notebooks in Jupyter, fix the permissions:
+
+```bash
+# Make jupyter_notebooks directory writable for all users
+chmod 777 jupyter_notebooks/
+
+# Or restart jupyter container after fixing permissions
+docker-compose restart jupyter
+```
+
+This ensures the Jupyter container (running as user `jovyan`) can create and edit notebooks.
+
 ---
 
 ## 📜 Credits & Attributions
