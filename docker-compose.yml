@@ -13,8 +13,9 @@ services:
       - BACKEND_PORT=8099
       - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:${FRONTEND_PORT:-3005},http://frontend:${FRONTEND_PORT:-3005}}
     volumes:
-      # Mount core directory for development (comment out for production)
+      # Mount core and backend directories for hot reload development
       - ./core:/app/core
+      - ./backend:/app/backend
       - ./output:/app/output
       # Persist database and simulation data
       - ./simulations.db:/app/simulations.db
@@ -42,6 +43,11 @@ services:
     depends_on:
       backend:
         condition: service_healthy
+    volumes:
+      # Mount frontend directory for hot reload development
+      # Use anonymous volume for node_modules to avoid conflicts
+      - ./frontend:/app/frontend
+      - /app/frontend/node_modules
     networks:
       - warptorch-network
     restart: unless-stopped
@@ -86,8 +92,9 @@ services:
       - ./output:/home/jovyan/output
       # Access database for results analysis
       - ./simulations.db:/home/jovyan/simulations.db
-      # Full access to core code for contributors to modify
+      # Full access to core and backend code for development
       - ./core:/home/jovyan/core
+      - ./backend:/home/jovyan/backend
     environment:
       - JUPYTER_TOKEN=${JUPYTER_TOKEN:-warptorch}
       - JUPYTER_ENABLE_LAB=yes
@@ -95,7 +102,7 @@ services:
       - warptorch-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8888/"]
+      test: ["CMD", "curl", "-f", "http://localhost:8888/"]
       interval: 30s
       timeout: 10s
       retries: 3
