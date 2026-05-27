@@ -314,19 +314,7 @@ This shifts the negative-energy problem into quantum-information engineering.
 
 ---
 
-## GRA Meta-Nulling Framework (2026)
 
-Theoretical engineering framework combining:
-
-- High-temperature superconductors
-- Casimir cavities
-- Petawatt laser lattices
-
-to manipulate vacuum energy density.
-
-Claims suggest possible reduction of effective energy costs to kilowatt-hour scales.
-
----
 
 # MATHEMATICAL FRAMEWORK AND EINSTEIN ANALYSIS
 
