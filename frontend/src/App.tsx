@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Grid } from '@react-three/drei'
+import { OrbitControls } from '@react-three/drei'
 import WarpBubble from './components/WarpBubble'
 import AxesHelper from './components/AxesHelper'
 import SimulationPanel from './components/SimulationPanel'
 import SimulationHistory from './components/SimulationHistory'
 import SimulationComparison from './components/SimulationComparison'
 import Navbar from './components/Navbar'
+import ColorSettings from './components/ColorSettings'
+import CustomGrid from './components/CustomGrid'
 import './App.css'
 
 function App() {
@@ -16,6 +18,13 @@ function App() {
   const [isComparing, setIsComparing] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
   const [comparisonMode, setComparisonMode] = useState(false)
+
+  const [colors, setColors] = useState({
+    bubbleCore: '#ff0000',
+    bubbleShell: '#cc0000',
+    gridCell: '#333333',
+    gridSection: '#555555'
+  })
 
   const [activeParams, setActiveParams] = useState({
     metric: 'alcubierre',
@@ -181,6 +190,11 @@ function App() {
 
   return (
     <div className="app">
+      <ColorSettings
+        onColorsChange={setColors}
+        currentColors={colors}
+      />
+
       <Navbar
         onHistoryToggle={() => setShowHistory(!showHistory)}
         showHistory={showHistory}
@@ -200,29 +214,22 @@ function App() {
           <color attach="background" args={['#0a0a0f']} />
           <ambientLight intensity={0.5} />
 
-          <Grid
-            args={[50, 50]}
-            cellSize={1}
-            cellThickness={0.3}
-            cellColor="#333"
-            sectionSize={5}
-            sectionThickness={1}
-            sectionColor="#555"
-            fadeDistance={60}
-            fadeStrength={1}
-            followCamera={false}
-            infiniteGrid
+          <CustomGrid
+            cellColor={colors.gridCell}
+            sectionColor={colors.gridSection}
           />
 
           <AxesHelper size={5} />
 
-          {/* Передаем метрику в визуализатор */}
+          {/* Передаем метрику и цвета в визуализатор */}
           <WarpBubble
             data={simulationData}
             metric={activeParams.metric}
             velocity={activeParams.velocity}
             radius={activeParams.radius}
             sigma={activeParams.sigma}
+            bubbleCoreColor={colors.bubbleCore}
+            bubbleShellColor={colors.bubbleShell}
           />
 
           <OrbitControls

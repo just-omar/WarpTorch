@@ -8,9 +8,11 @@ interface WarpBubbleProps {
   velocity: number
   radius: number
   sigma: number
+  bubbleCoreColor?: string
+  bubbleShellColor?: string
 }
 
-function WarpBubble({ data, metric, velocity, radius, sigma }: WarpBubbleProps) {
+function WarpBubble({ data, metric, velocity, radius, sigma, bubbleCoreColor = '#ff0000', bubbleShellColor = '#cc0000' }: WarpBubbleProps) {
   const planeRef = useRef<THREE.Mesh>(null)
   const bubbleRef = useRef<THREE.Group>(null)
   const coreMaterialRef = useRef<THREE.MeshBasicMaterial>(null)
@@ -27,18 +29,16 @@ function WarpBubble({ data, metric, velocity, radius, sigma }: WarpBubbleProps) 
     }
   }, [])
 
-  // Direct red colors using Tailwind color palette
+  // Direct colors from props
   const targetCoreColor = useMemo(() => {
-    const color = new THREE.Color("#ff0000") // Pure red for core
-    console.log('Core color set to:', color.getStyle())
+    const color = new THREE.Color(bubbleCoreColor)
     return color
-  }, [])
+  }, [bubbleCoreColor])
 
   const targetShellColor = useMemo(() => {
-    const color = new THREE.Color("#cc0000") // Dark red for shell
-    console.log('Shell color set to:', color.getStyle())
+    const color = new THREE.Color(bubbleShellColor)
     return color
-  }, [])
+  }, [bubbleShellColor])
 
   useFrame((state) => {
     current.current.radius = THREE.MathUtils.lerp(current.current.radius, radius, 0.05)
