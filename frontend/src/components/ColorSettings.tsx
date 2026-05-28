@@ -4,14 +4,12 @@ interface ColorSettingsProps {
   onColorsChange: (colors: {
     bubbleCore: string
     bubbleShell: string
-    gridCell: string
-    gridSection: string
+    gridColor: string
   }) => void
   currentColors: {
     bubbleCore: string
     bubbleShell: string
-    gridCell: string
-    gridSection: string
+    gridColor: string
   }
 }
 
@@ -30,43 +28,37 @@ function ColorSettings({ onColorsChange, currentColors }: ColorSettingsProps) {
       name: 'Red',
       bubbleCore: '#ff0000',
       bubbleShell: '#cc0000',
-      gridCell: '#333333',
-      gridSection: '#555555'
+      gridColor: '#444444'
     },
     blue: {
       name: 'Blue',
       bubbleCore: '#0066ff',
       bubbleShell: '#0044cc',
-      gridCell: '#1a237e',
-      gridSection: '#283593'
+      gridColor: '#1a237e'
     },
     green: {
       name: 'Green',
       bubbleCore: '#00ff00',
       bubbleShell: '#00cc00',
-      gridCell: '#1b5e20',
-      gridSection: '#2e7d32'
+      gridColor: '#1b5e20'
     },
     purple: {
       name: 'Purple',
       bubbleCore: '#9c27b0',
       bubbleShell: '#7b1fa2',
-      gridCell: '#4a148c',
-      gridSection: '#6a1b9a'
+      gridColor: '#4a148c'
     },
     orange: {
       name: 'Orange',
       bubbleCore: '#ff6600',
       bubbleShell: '#cc5200',
-      gridCell: '#e65100',
-      gridSection: '#ff6f00'
+      gridColor: '#e65100'
     },
     cyan: {
       name: 'Cyan',
       bubbleCore: '#00ffff',
       bubbleShell: '#00cccc',
-      gridCell: '#006064',
-      gridSection: '#0097a7'
+      gridColor: '#006064'
     }
   }
 
@@ -122,17 +114,11 @@ function ColorSettings({ onColorsChange, currentColors }: ColorSettingsProps) {
                 ></div>
               </div>
               <div className="flex-1">
-                <div className="text-xs text-gray-400 mb-1">Preview</div>
-                <div className="flex gap-1">
-                  <div
-                    className="w-full h-2 rounded-full transition-colors duration-300"
-                    style={{ backgroundColor: colors.gridCell }}
-                  ></div>
-                  <div
-                    className="w-full h-2 rounded-full transition-colors duration-300"
-                    style={{ backgroundColor: colors.gridSection }}
-                  ></div>
-                </div>
+                <div className="text-xs text-gray-400 mb-1">Grid Preview</div>
+                <div
+                  className="w-full h-2 rounded-full transition-colors duration-300"
+                  style={{ backgroundColor: colors.gridColor }}
+                ></div>
               </div>
             </div>
           </div>
@@ -170,8 +156,7 @@ function ColorSettings({ onColorsChange, currentColors }: ColorSettingsProps) {
               {[
                 { key: 'bubbleCore', label: 'Bubble Core', icon: '🔴' },
                 { key: 'bubbleShell', label: 'Bubble Shell', icon: '🟡' },
-                { key: 'gridCell', label: 'Grid Cell', icon: '🔲' },
-                { key: 'gridSection', label: 'Grid Section', icon: '🔳' }
+                { key: 'gridColor', label: 'Grid Color', icon: '🔲' }
               ].map(({ key, label, icon }) => (
                 <div key={key} className="group">
                   <div className="flex items-center justify-between mb-1">
