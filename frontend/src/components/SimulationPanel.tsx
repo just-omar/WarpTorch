@@ -34,7 +34,7 @@ function SimulationPanel({ onStart, onCompare, isSimulating, isComparing = false
   return (
     <div className="w-80 bg-gradient-to-br from-[#1a1a2e] to-[#16213e] border-r border-[#0f3460] p-5 flex flex-col gap-5 overflow-y-auto shadow-lg">
       <div className="flex flex-col gap-5">
-        <h2 className="text-rose-500 text-2xl m-0" style={{ textShadow: '0 0 10px rgba(233, 69, 96, 0.5)' }}>🔥 WarpTorch TEST 123 🔥</h2>
+        <h2 className="text-rose-500 text-2xl m-0" style={{ textShadow: '0 0 10px rgba(233, 69, 96, 0.5)' }}>WarpTorch</h2>
         <p className="text-sky-400 text-base opacity-80 m-0">Spacetime Metric Visualization</p>
 
         <div className="flex flex-col gap-4">
