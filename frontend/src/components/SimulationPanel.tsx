@@ -34,7 +34,7 @@ function SimulationPanel({ onStart, onCompare, isSimulating, isComparing = false
   return (
     <div className="w-80 bg-gradient-to-br from-[#1a1a2e] to-[#16213e] border-r border-[#0f3460] p-5 flex flex-col gap-5 overflow-y-auto shadow-lg">
       <div className="flex flex-col gap-5">
-        <h2 className="text-rose-500 text-2xl m-0" style={{ textShadow: '0 0 10px rgba(233, 69, 96, 0.5)' }}>WarpTorch Simulator</h2>
+        <h2 className="text-rose-500 text-2xl m-0" style={{ textShadow: '0 0 10px rgba(233, 69, 96, 0.5)' }}>🔥 WarpTorch TEST 123 🔥</h2>
         <p className="text-sky-400 text-base opacity-80 m-0">Spacetime Metric Visualization</p>
 
         <div className="flex flex-col gap-4">
@@ -202,7 +202,7 @@ function SimulationPanel({ onStart, onCompare, isSimulating, isComparing = false
             disabled={isSimulating}
             className="flex-1 bg-gradient-to-br from-rose-500 to-red-500 text-white border-0 rounded-lg py-3 text-base font-bold cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-rose-500/60 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none uppercase tracking-wide mt-4 mr-1"
           >
-            {isSimulating ? 'Simulating...' : 'Start Simulationываы'}
+            {isSimulating ? 'Simulating...' : '🚀 START TEST 🚀'}
           </button>
 
           <button
