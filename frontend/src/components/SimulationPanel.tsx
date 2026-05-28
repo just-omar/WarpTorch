@@ -196,11 +196,11 @@ function SimulationPanel({ onStart, onCompare, isSimulating, isComparing = false
           </div>
         </div>
 
-        <div className="flex gap-1">
+        <div className="flex flex-col gap-2">
           <button
             onClick={handleStart}
             disabled={isSimulating}
-            className="flex-1 bg-gradient-to-br from-rose-500 to-red-500 text-white border-0 rounded-lg py-3 text-base font-bold cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-rose-500/60 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none uppercase tracking-wide mt-4 mr-1"
+            className="w-full bg-gradient-to-br from-rose-500 to-red-500 text-white border-0 rounded-lg py-3 text-base font-bold cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-rose-500/60 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none uppercase tracking-wide"
           >
             {isSimulating ? 'Simulating...' : '🚀 START TEST 🚀'}
           </button>
@@ -208,7 +208,7 @@ function SimulationPanel({ onStart, onCompare, isSimulating, isComparing = false
           <button
             onClick={handleCompare}
             disabled={isComparing || isSimulating}
-            className="px-4 py-3 bg-[#1a1a2e] text-sky-400 border border-sky-600 rounded mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-4 py-3 bg-[#1a1a2e] text-sky-400 border border-sky-600 rounded disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isComparing ? 'Comparing...' : '🔬 Compare Methods'}
           </button>

@@ -1,17 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --warp-core: #ff0000;
-  --warp-shell: #cc0000;
-  --warp-core-bright: #ff3333;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@theme {
+  --color-warp-core: #ff0000;
+  --color-warp-shell: #cc0000;
+  --color-warp-core-bright: #ff3333;
 }
 
 body {
@@ -20,6 +12,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
 }
 
 code {
