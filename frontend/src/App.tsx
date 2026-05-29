@@ -21,8 +21,8 @@ function App() {
 
   const [colors, setColors] = useState({
     bubbleCore: '#ff0000',
-    bubbleShell: '#cc0000',
-    spacetimeColor: '#ff3333'
+    bubbleShell: '#cc001f',
+    spacetimeColor: '#4b33ff'
   })
 
   // Grid color is fixed
