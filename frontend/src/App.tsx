@@ -22,9 +22,11 @@ function App() {
   const [colors, setColors] = useState({
     bubbleCore: '#ff0000',
     bubbleShell: '#cc0000',
-    gridColor: '#444444',
     spacetimeColor: '#ff3333'
   })
+
+  // Grid color is fixed
+  const gridColor = '#444444'
 
   const [showBubbleCore, setShowBubbleCore] = useState(true)
 
@@ -219,8 +221,8 @@ function App() {
           <ambientLight intensity={0.5} />
 
           <CustomGrid
-            cellColor={colors.gridColor}
-            sectionColor={colors.gridColor}
+            cellColor={gridColor}
+            sectionColor={gridColor}
           />
 
           <AxesHelper size={5} />
