@@ -5,11 +5,13 @@ interface ColorSettingsProps {
     bubbleCore: string
     bubbleShell: string
     gridColor: string
+    spacetimeColor: string
   }) => void
   currentColors: {
     bubbleCore: string
     bubbleShell: string
     gridColor: string
+    spacetimeColor: string
   }
 }
 
@@ -18,6 +20,7 @@ function ColorSettings({ onColorsChange, currentColors }: ColorSettingsProps) {
   const [colors, setColors] = useState(currentColors)
 
   const handleColorChange = (key: keyof typeof colors, value: string) => {
+    console.log('🎨 ColorSettings: Changing', key, 'to', value)
     const newColors = { ...colors, [key]: value }
     setColors(newColors)
     onColorsChange(newColors)
@@ -28,37 +31,43 @@ function ColorSettings({ onColorsChange, currentColors }: ColorSettingsProps) {
       name: 'Red',
       bubbleCore: '#ff0000',
       bubbleShell: '#cc0000',
-      gridColor: '#444444'
+      gridColor: '#444444',
+      spacetimeColor: '#ff3333'
     },
     blue: {
       name: 'Blue',
       bubbleCore: '#0066ff',
       bubbleShell: '#0044cc',
-      gridColor: '#1a237e'
+      gridColor: '#1a237e',
+      spacetimeColor: '#3388ff'
     },
     green: {
       name: 'Green',
       bubbleCore: '#00ff00',
       bubbleShell: '#00cc00',
-      gridColor: '#1b5e20'
+      gridColor: '#1b5e20',
+      spacetimeColor: '#44ff44'
     },
     purple: {
       name: 'Purple',
       bubbleCore: '#9c27b0',
       bubbleShell: '#7b1fa2',
-      gridColor: '#4a148c'
+      gridColor: '#4a148c',
+      spacetimeColor: '#bb44ff'
     },
     orange: {
       name: 'Orange',
       bubbleCore: '#ff6600',
       bubbleShell: '#cc5200',
-      gridColor: '#e65100'
+      gridColor: '#e65100',
+      spacetimeColor: '#ff8833'
     },
     cyan: {
       name: 'Cyan',
       bubbleCore: '#00ffff',
       bubbleShell: '#00cccc',
-      gridColor: '#006064'
+      gridColor: '#006064',
+      spacetimeColor: '#33ffff'
     }
   }
 
@@ -156,7 +165,8 @@ function ColorSettings({ onColorsChange, currentColors }: ColorSettingsProps) {
               {[
                 { key: 'bubbleCore', label: 'Bubble Core', icon: '🔴' },
                 { key: 'bubbleShell', label: 'Bubble Shell', icon: '🟡' },
-                { key: 'gridColor', label: 'Grid Color', icon: '🔲' }
+                { key: 'gridColor', label: 'Grid Color', icon: '🔲' },
+                { key: 'spacetimeColor', label: 'Spacetime Sheet', icon: '🌊' }
               ].map(({ key, label, icon }) => (
                 <div key={key} className="group">
                   <div className="flex items-center justify-between mb-1">

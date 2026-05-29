@@ -22,7 +22,8 @@ function App() {
   const [colors, setColors] = useState({
     bubbleCore: '#ff0000',
     bubbleShell: '#cc0000',
-    gridColor: '#444444'
+    gridColor: '#444444',
+    spacetimeColor: '#ff3333'
   })
 
   const [activeParams, setActiveParams] = useState({
@@ -229,6 +230,7 @@ function App() {
             sigma={activeParams.sigma}
             bubbleCoreColor={colors.bubbleCore}
             bubbleShellColor={colors.bubbleShell}
+            spacetimeColor={colors.spacetimeColor}
           />
 
           <OrbitControls

@@ -31,6 +31,7 @@ function CustomGrid({
 
   // Обновляем целевые цвета при изменении пропсов
   useEffect(() => {
+    console.log('🎨 CustomGrid: Updating colors to', { cellColor, sectionColor })
     targetCellColor.current.set(cellColor)
     targetSectionColor.current.set(sectionColor)
   }, [cellColor, sectionColor])
@@ -98,7 +99,7 @@ function CustomGrid({
       {/* Тонкие линии (ячейки) */}
       <lineSegments ref={cellLinesRef} geometry={cellGeometry}>
         <lineBasicMaterial
-          color="#ffffff"
+          color={cellColor}
           transparent
           opacity={0.5}
           linewidth={1}
@@ -108,7 +109,7 @@ function CustomGrid({
       {/* Толстые линии (секции) */}
       <lineSegments ref={sectionLinesRef} geometry={sectionGeometry}>
         <lineBasicMaterial
-          color="#ffffff"
+          color={sectionColor}
           transparent
           opacity={0.8}
           linewidth={2}

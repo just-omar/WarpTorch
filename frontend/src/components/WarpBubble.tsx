@@ -10,9 +10,10 @@ interface WarpBubbleProps {
   sigma: number
   bubbleCoreColor?: string
   bubbleShellColor?: string
+  spacetimeColor?: string
 }
 
-function WarpBubble({ data, metric, velocity, radius, sigma, bubbleCoreColor = '#ff0000', bubbleShellColor = '#cc0000' }: WarpBubbleProps) {
+function WarpBubble({ data, metric, velocity, radius, sigma, bubbleCoreColor = '#ff0000', bubbleShellColor = '#cc0000', spacetimeColor = '#ff3333' }: WarpBubbleProps) {
   const planeRef = useRef<THREE.Mesh>(null)
   const bubbleRef = useRef<THREE.Group>(null)
   const coreMaterialRef = useRef<THREE.MeshBasicMaterial>(null)
@@ -122,7 +123,7 @@ function WarpBubble({ data, metric, velocity, radius, sigma, bubbleCoreColor = '
     <group>
       <mesh ref={planeRef} geometry={spacetimeSheet.geometry}>
         <meshBasicMaterial
-          color="#ff3333"
+          color={spacetimeColor}
           wireframe
           transparent
           opacity={0.4}
