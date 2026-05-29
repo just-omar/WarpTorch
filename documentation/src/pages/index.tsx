@@ -16,6 +16,14 @@ export default function Home(): JSX.Element {
             GPU-Accelerated General Relativity Toolkit
           </p>
 
+          <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+            <img
+              src="/WarpTorch/img/Warptoch-demo.gif"
+              alt="WarpTorch Demo"
+              style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}
+            />
+          </div>
+
           <div style={{ marginTop: '3rem', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link
               to="/docs/intro"

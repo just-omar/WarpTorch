@@ -5,6 +5,8 @@
 [![PyTorch GPU](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 [![CUDA Acceleration](https://img.shields.io/badge/CUDA-Accelerated-green.svg)](https://developer.nvidia.com/cuda-toolkit)
 
+![WarpTorch Demo](https://raw.githubusercontent.com/just-omar/WarpTorch/main/documentation/static/img/Warptoch-demo.gif)
+
 **WarpTorch** is a high-performance, GPU-accelerated General Relativity (GR) toolkit designed for simulating, analyzing, and visualizing warp drive spacetimes. By porting and optimizing numerical relativity methods to modern tensor frameworks, WarpTorch enables physicists and enthusiasts to solve Einstein's field equations and evaluate exotic geometries at unprecedented speeds using NVIDIA CUDA, AMD ROCm, and Intel Arc hardware.
 
 ---
