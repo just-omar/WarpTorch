@@ -15,51 +15,29 @@ function DynamicGrid({ cellColor, sectionColor }: DynamicGridProps) {
 
   // Создаём материалы для сетки
   useEffect(() => {
-    if (!gridRef.current) {
-      console.log('Grid ref not available')
-      return
-    }
+    if (!gridRef.current) return
 
     // Находим все меши в сетке
     const meshes: THREE.Mesh[] = []
     gridRef.current.traverse((child) => {
       if (child instanceof THREE.Mesh) {
         meshes.push(child)
-        console.log('Found mesh in grid:', child, 'Color:', child.material.color?.getHexString())
       }
     })
-
-    console.log('Total meshes in grid:', meshes.length)
 
     if (meshes.length >= 2) {
       // Первый меши - это ячейки (cell), второй - секции (section)
       cellMaterialRef.current = meshes[0].material as THREE.MeshBasicMaterial
       sectionMaterialRef.current = meshes[1].material as THREE.MeshBasicMaterial
 
-      console.log('Cell material:', cellMaterialRef.current, 'Current color:', cellMaterialRef.current.color.getHexString())
-      console.log('Section material:', sectionMaterialRef.current, 'Current color:', sectionMaterialRef.current.color.getHexString())
-
       // Устанавливаем начальные цвета
       cellMaterialRef.current.color.set(cellColor)
       sectionMaterialRef.current.color.set(sectionColor)
-
-      console.log('Set cellColor to:', cellColor, 'sectionColor to:', sectionColor)
     }
   }, []) // Запускаем только один раз при монтировании
 
-  // Обновляем целевые цвета при изменении пропсов
-  useEffect(() => {
-    console.log('Colors updated - cellColor:', cellColor, 'sectionColor:', sectionColor)
-
-    if (cellMaterialRef.current) {
-      console.log('Updating cell material from', cellMaterialRef.current.color.getHexString(), 'to', cellColor)
-      cellMaterialRef.current.color.set(cellColor)
-    }
-    if (sectionMaterialRef.current) {
-      console.log('Updating section material from', sectionMaterialRef.current.color.getHexString(), 'to', sectionColor)
-      sectionMaterialRef.current.color.set(sectionColor)
-    }
-  }, [cellColor, sectionColor])
+  // Примечание: цвета обновляются плавно в useFrame через lerp
+  // useEffect здесь не нужен, чтобы избежать мерцания от мгновенного обновления
 
   // Плавное обновление цветов
   useFrame(() => {
