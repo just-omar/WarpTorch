@@ -202,7 +202,7 @@ function SimulationPanel({ onStart, onCompare, isSimulating, isComparing = false
             disabled={isSimulating}
             className="w-full bg-gradient-to-br from-rose-500 to-red-500 text-white border-0 rounded-lg py-3 text-base font-bold cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-rose-500/60 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none uppercase tracking-wide"
           >
-            {isSimulating ? 'Simulating...' : '🚀 START TEST 🚀'}
+            {isSimulating ? 'Simulating...' : 'Start Simulation'}
           </button>
 
           <button
