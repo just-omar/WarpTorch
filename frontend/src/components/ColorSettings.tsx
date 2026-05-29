@@ -13,9 +13,11 @@ interface ColorSettingsProps {
     gridColor: string
     spacetimeColor: string
   }
+  showBubbleCore?: boolean
+  onShowBubbleCoreChange?: (show: boolean) => void
 }
 
-function ColorSettings({ onColorsChange, currentColors }: ColorSettingsProps) {
+function ColorSettings({ onColorsChange, currentColors, showBubbleCore = true, onShowBubbleCoreChange }: ColorSettingsProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [colors, setColors] = useState(currentColors)
 
@@ -159,7 +161,24 @@ function ColorSettings({ onColorsChange, currentColors }: ColorSettingsProps) {
 
           {/* Custom Colors */}
           <div className="space-y-3">
-            <label className="text-gray-300 text-sm font-semibold block">Custom Colors:</label>
+            <div className="flex items-center justify-between">
+              <label className="text-gray-300 text-sm font-semibold">Custom Colors:</label>
+              {/* Bubble Core Toggle */}
+              {onShowBubbleCoreChange && (
+                <button
+                  onClick={() => onShowBubbleCoreChange(!showBubbleCore)}
+                  className="flex items-center gap-2 px-3 py-1 bg-[#0f3460]/50 rounded-lg hover:bg-[#0f3460]/70 transition-colors"
+                  title="Toggle Bubble Core visibility"
+                >
+                  <span className="text-xs text-gray-300">
+                    {showBubbleCore ? '🔴 Core ON' : '⭕ Core OFF'}
+                  </span>
+                  <div className={`w-8 h-4 rounded-full transition-colors ${showBubbleCore ? 'bg-rose-500' : 'bg-gray-600'}`}>
+                    <div className={`w-3 h-3 bg-white rounded-full transition-transform ${showBubbleCore ? 'translate-x-4' : 'translate-x-0'}`}></div>
+                  </div>
+                </button>
+              )}
+            </div>
 
             <div className="space-y-2">
               {[

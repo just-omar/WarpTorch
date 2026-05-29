@@ -26,6 +26,8 @@ function App() {
     spacetimeColor: '#ff3333'
   })
 
+  const [showBubbleCore, setShowBubbleCore] = useState(true)
+
   const [activeParams, setActiveParams] = useState({
     metric: 'alcubierre',
     velocity: 0.0,
@@ -193,6 +195,8 @@ function App() {
       <ColorSettings
         onColorsChange={setColors}
         currentColors={colors}
+        showBubbleCore={showBubbleCore}
+        onShowBubbleCoreChange={setShowBubbleCore}
       />
 
       <Navbar
@@ -231,6 +235,7 @@ function App() {
             bubbleCoreColor={colors.bubbleCore}
             bubbleShellColor={colors.bubbleShell}
             spacetimeColor={colors.spacetimeColor}
+            showBubbleCore={showBubbleCore}
           />
 
           <OrbitControls
