@@ -80,28 +80,79 @@ npm run start
 
 ## 🤝 Contributing
 
-Contributions are welcome! We're looking for help with:
-
-- **New metrics** - Implement novel spacetime geometries
-- **Visualization** - Improve 3D rendering and interactive plots  
-- **Performance** - Optimize GPU kernels and tensor operations
-- **Documentation** - Write tutorials and examples
-- **Bug fixes** - Fix issues and improve stability
-
 **Tech stack by component:**
 - **Backend** (`core/`, `backend/`) - Python, PyTorch, FastAPI
-- **Frontend** (`frontend/`) - React, Three.js, React Three Fiber  
+- **Frontend** (`frontend/`) - React, Three.js, React Three Fiber
 - **Documentation** (`documentation/`) - Docusaurus, MDX
 - **Notebooks** (`jupyter_notebooks/`) - Jupyter Lab, Python
 
-**Getting started:**
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Test thoroughly
-5. Open a Pull Request
+---
 
-**First time contributors welcome!** Feel free to ask questions in Issues.
+### 🌱 How to Contribute (Step-by-Step)
+
+#### 📝 Fix a typo or small edit
+**The easiest way - no coding needed:**
+1. Click "Edit this file" button on GitHub
+2. Make your changes
+3. Click "Propose changes" → "Create Pull Request"
+
+#### 💻 Contribute code
+**Full workflow with git:**
+```bash
+# 1. Fork the repo (top right button)
+# 2. Clone your fork
+git clone https://github.com/YOUR_USERNAME/WarpTorch.git
+cd WarpTorch
+
+# 3. Create branch for your change
+git checkout -b fix/amazing-feature
+
+# 4. Make changes, test them
+# 5. Commit and push
+git add .
+git commit -m "Fix: brief description of changes"
+git push origin fix/amazing-feature
+
+# 6. Open Pull Request on GitHub
+```
+
+#### ✨ Contribution Tips
+- 🎯 **Keep it small** - One PR = one improvement
+- 📝 **Be clear** - Describe what and why
+- 🧪 **Test it** - Make sure nothing breaks
+- 💬 **Ask freely** - Questions welcome in Issues
+
+---
+
+### 👥 Find Your Role
+
+#### 👨‍💻 Frontend Developers
+**Improve:** `frontend/` - React, Three.js, 3D visualizations, UI/UX
+- Enhance 3D warp bubble rendering
+- Add interactive controls and animations
+- Improve responsive design and performance
+
+#### ⚙️ Backend Developers
+**Improve:** `core/`, `backend/` - Python, PyTorch, FastAPI, GPU computing
+- Optimize tensor operations and GPU kernels
+- Add new API endpoints and features
+- Improve computation performance
+
+#### 🔬 Physicists & Scientists
+**Improve:** `core/`, `jupyter_notebooks/` - Spacetime metrics, GR equations, analysis
+- Implement novel warp drive metrics
+- Add energy condition validations
+- Create physics tutorials and examples
+
+#### 📊 Data Scientists / ML Engineers
+**Improve:** `jupyter_notebooks/`, `core/` - PyTorch optimization, analysis workflows
+- Optimize GPU memory usage
+- Add advanced analysis notebooks
+- Improve numerical solvers
+
+---
+
+**🚀 Ready?** Pick your role, follow the steps, and make your first contribution!
 
 
 ---
