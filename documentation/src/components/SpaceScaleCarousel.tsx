@@ -96,39 +96,11 @@ export default function SpaceScaleCarousel(): React.Element {
                 </thead>
                 <tbody>
                   <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)' }}>
-                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>фыфыWalking (5 km/h)</td>
+                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Walking (5 km/h)</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>1.4 m/s</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>4.7×10⁻⁹c</td>
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~290 million years</td>
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>🙂 Possible</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)', background: 'var(--ifm-table-stripe-background)' }}>
-                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Car (100 km/h)</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>27.8 m/s</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>9.3×10⁻⁸c</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~45 million years</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>✅ Real</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)' }}>
-                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Passenger Airplane</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>900 km/h</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>8.3×10⁻⁷c</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~5 million years</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>✅ Real</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)', background: 'var(--ifm-table-stripe-background)' }}>
-                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Bullet (1 km/s)</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>1 km/s</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>0.000003c</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~1.27 million years</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>✅ Real</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)' }}>
-                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Earth Orbital Speed</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>7.9 km/s</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>0.000026c</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~161,000 years</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>✅ Real</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)', background: 'var(--ifm-table-stripe-background)' }}>
                     <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Voyager 1</td>
@@ -138,25 +110,11 @@ export default function SpaceScaleCarousel(): React.Element {
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>✅ Real</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)' }}>
-                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>New Horizons</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>16.3 km/s</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>0.000054c</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~78,000 years</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>✅ Real</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)', background: 'var(--ifm-table-stripe-background)' }}>
                     <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Chemical Rocket (max)</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>20 km/s</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>0.000067c</td>
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~63,000 years</td>
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>✅ Modern</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)' }}>
-                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Nuclear Pulse (Project Orion)</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>100–300 km/s</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>~0.001c</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~4,000–13,000 years</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>🔧 Theoretically Possible</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)', background: 'var(--ifm-table-stripe-background)' }}>
                     <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Ion Drive (future)</td>
@@ -166,39 +124,11 @@ export default function SpaceScaleCarousel(): React.Element {
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>✅ Real, Slow</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)' }}>
-                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Solar Sail</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>500 km/s</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>0.0017c</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~2,500 years</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>🚀 Possible</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)', background: 'var(--ifm-table-stripe-background)' }}>
                     <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Fusion (Project Daedalus)</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>36,000 km/s</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>0.12c</td>
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~36 years</td>
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>💭 Concept</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)' }}>
-                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Antimatter Drive</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>150,000 km/s</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>0.5c</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~8.5 years*</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>🔮 Theoretical</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)', background: 'var(--ifm-table-stripe-background)' }}>
-                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Breakthrough Starshot</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>60,000 km/s</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>0.2c</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~21 years</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>🚧 In Development</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)' }}>
-                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Relativistic Ship</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>270,000 km/s</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>0.9c</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~4.7 years (Earth time)</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>🔮 Theoretical</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)', background: 'var(--ifm-table-stripe-background)' }}>
                     <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Speed of Light</td>
@@ -215,27 +145,27 @@ export default function SpaceScaleCarousel(): React.Element {
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>🫧 Hypothetical</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)', background: 'var(--ifm-table-stripe-background)' }}>
-                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Warp Drive (5c)</td>
+                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Warp Drive (2c)</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>FTL</td>
-                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>5c</td>
-                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~10 months</td>
+                    <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>2c</td>
+                    <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~2.1 years</td>
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>🫧 Hypothetical</td>
                   </tr>
-                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)' }}>
+                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)', background: 'var(--ifm-table-stripe-background)' }}>
                     <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Warp Drive (10c)</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>FTL</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>10c</td>
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~5 months</td>
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>🫧 Hypothetical</td>
                   </tr>
-                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)', background: 'var(--ifm-table-stripe-background)' }}>
+                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)' }}>
                     <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Warp Drive (100c)</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>FTL</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>100c</td>
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~15 days</td>
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>🫧 Hypothetical</td>
                   </tr>
-                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)' }}>
+                  <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)', background: 'var(--ifm-table-stripe-background)' }}>
                     <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Warp Drive (1000c)</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>FTL</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>1000c</td>
