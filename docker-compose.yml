@@ -105,6 +105,8 @@ services:
     environment:
       - JUPYTER_TOKEN=${JUPYTER_TOKEN:-warptorch}
       - JUPYTER_ENABLE_LAB=yes
+      # Add project root to Python path for automatic imports
+      - PYTHONPATH=/home/jovyan:${PYTHONPATH}
     networks:
       - warptorch-network
     restart: unless-stopped

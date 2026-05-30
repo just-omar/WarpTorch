@@ -33,5 +33,8 @@ USER jovyan
 # Set working directory
 WORKDIR /home/jovyan
 
+# Copy Jupyter startup configuration for automatic imports
+COPY .ipython /home/jovyan/.ipython
+
 # Expose port
 EXPOSE 8888

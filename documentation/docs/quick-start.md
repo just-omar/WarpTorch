@@ -93,34 +93,71 @@ Simulation saved in `output/` folder.
 
 ## Step 3: Visualization (30 seconds) 📊
 
-Launch Jupyter Notebook:
+Launch Jupyter Lab:
 
 ```bash
 jupyter lab
 ```
 
-Create a new notebook and enter:
+**⚠️ Setup for new notebooks:** Add this to your **first cell**:
 
 ```python
-from core.metrics.alcubierre import get_alcubierre_metric
-from core.visualizer import plot_3d
+import sys, os
+sys.path.insert(0, os.path.abspath('..'))
+```
+
+Then create a new cell and enter:
+
+```python
 import torch
+import plotly.graph_objects as go
+import numpy as np
+
+from core.metrics.alcubierre import get_alcubierre_metric
+from core.solver.energy import get_energy_tensor
+from core.visualizer.slicing import get_2d_slice
+from core.utils import get_best_device
+
+# Setup
+device = get_best_device()
+grid_size = (1, 64, 64, 64)
+grid_scale = (0.1, 0.5, 0.5, 0.5)
+world_center = (0.0, 16.0, 16.0, 16.0)
 
 # Create a warp bubble
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 metric = get_alcubierre_metric(
-    grid_size=(1, 64, 64, 64),
-    v=1.5,  # 1.5x speed of light
-    R=6.0,
-    sigma=2.0,
+    grid_size=grid_size,
+    world_center=world_center,
+    v=1.5,                          # 1.5x speed of light
+    R=6.0,                          # bubble radius
+    sigma=2.0,                       # wall thickness
+    grid_scale=grid_scale,
     device=device
 )
 
-# Beautiful 3D visualization
-plot_3d(metric)
+# Calculate energy
+energy = get_energy_tensor(metric)
+
+# Visualize as interactive 2D slice
+energy_slice = get_2d_slice(energy, component=(0, 0), slice_plane='xy')
+
+# Create coordinate axes
+x_coords = (np.arange(grid_size[1]) * grid_scale[1]) - world_center[1]
+y_coords = (np.arange(grid_size[2]) * grid_scale[2]) - world_center[2]
+
+fig = go.Figure(data=go.Heatmap(
+    z=energy_slice.T, x=x_coords, y=y_coords,
+    colorscale='RdBu', zmid=0,
+    colorbar=dict(title="Energy Density")
+))
+fig.update_layout(
+    title="Warp Bubble Energy Density",
+    xaxis_title="X (Meters)", yaxis_title="Y (Meters)"
+)
+fig.show()
 ```
 
-**You'll see a beautiful 3D visualization of a warp bubble!**
+**You'll see a beautiful interactive visualization of the warp bubble's energy density!**
 
 ## What's next? ➡️
 
@@ -187,6 +224,8 @@ Now that you've run your first simulation:
    ```bash
    jupyter lab jupyter_notebooks/01_alcubierre_bubble_analysis.ipynb
    ```
+
+   **💡 For new experiments:** Use the `_template.ipynb` template in `jupyter_notebooks/` - all imports are pre-configured!
 
 2. **Study the API for advanced usage:**
    [API Reference](/docs/api/metrics)
