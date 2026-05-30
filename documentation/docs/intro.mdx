@@ -3,10 +3,45 @@ import SpaceScaleCarousel from '@site/src/components/SpaceScaleCarousel';
 
 # WarpTorch 🫧
 
-<div style={{textAlign: 'center', margin: '40px 0', padding: '60px', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', borderRadius: '16px'}}>
-  <p style={{color: 'white', fontSize: '24px', margin: 0, opacity: 0.9}}>Simulate warp drives on your computer</p>
 
-</div>
+## What is WarpTorch? 
+
+**WarpTorch** is a free tool for simulating warp drives on your computer.
+
+### In simple terms:
+
+A warp drive is a way to travel faster than light by warping spacetime. This isn't science fiction — it's real physics from Einstein's general relativity.
+
+WarpTorch lets you:
+- **Create warp bubbles** and watch how they distort space
+- **Explore different metrics** — Alcubierre, Lentz, black holes
+- **Analyze energy** — how much energy does a warp drive need?
+- **Visualize in 3D** — beautiful plots in your browser
+
+## Why does this matter? 🌍
+
+### The Problem:
+
+Warp drive research is moving too slowly because:
+- MATLAB costs thousands of dollars (license)
+- You need expensive supercomputers
+- Complex tools are only available to specialists
+- Tiny community of researchers
+
+**The result?** At our current pace, we'll never see warp drives in our lifetime.
+
+### The Solution:
+
+**WarpTorch provides:**
+
+- **Free** — open source (MIT license)
+- **Fast** — runs on consumer GPUs
+- **Accessible** — Python, understandable syntax
+- **For everyone** — from students to physics professors
+
+**Goal:** Make warp drive research more accessible by removing cost and technical barriers.
+
+
 
 ## Understanding Warp Drives 🫧
 
@@ -89,42 +124,6 @@ WarpTorch lets you **simulate and explore** these different warp drive designs o
 
 It's a tool for research, education, and experimentation — making advanced physics accessible to everyone.
 
-## What is WarpTorch? 🫧
-
-**WarpTorch** is a free tool for simulating warp drives on your computer.
-
-### In simple terms:
-
-A warp drive is a way to travel faster than light by warping spacetime. This isn't science fiction — it's real physics from Einstein's general relativity.
-
-WarpTorch lets you:
-- **Create warp bubbles** and watch how they distort space
-- **Explore different metrics** — Alcubierre, Lentz, black holes
-- **Analyze energy** — how much energy does a warp drive need?
-- **Visualize in 3D** — beautiful plots in your browser
-
-## Why does this matter? 🌍
-
-### The Problem:
-
-Warp drive research is moving too slowly because:
-- MATLAB costs thousands of dollars (license)
-- You need expensive supercomputers
-- Complex tools are only available to specialists
-- Tiny community of researchers
-
-**The result?** At our current pace, we'll never see warp drives in our lifetime.
-
-### The Solution:
-
-**WarpTorch provides:**
-
-- **Free** — open source (MIT license)
-- **Fast** — runs on consumer GPUs
-- **Accessible** — Python, understandable syntax
-- **For everyone** — from students to physics professors
-
-**Goal:** Make warp drive research more accessible by removing cost and technical barriers.
 
 ## How does it work? ⚙️
 
@@ -154,33 +153,6 @@ But modern metrics (like the **Lentz soliton, 2021**) show that you can use **po
 
 WarpTorch lets you explore all these metrics and see how much energy is needed.
 
-## Comparison: MATLAB vs WarpTorch ⚖️
-
-### The traditional way (WarpFactory in MATLAB):
-
-```
-1. Buy MATLAB → $2000+
-2. Download WarpFactory → environment setup
-3. Configure parameters → complex, no GUI
-4. Run → wait 10-20 minutes
-5. Result → 2D plots in MATLAB
-```
-
-### With WarpTorch:
-
-```python
-# 1. Installation
-pip install torch
-
-# 2. Create a warp bubble (3 lines of code!)
-from core.metrics.alcubierre import get_alcubierre_metric
-metric = get_alcubierre_metric(v=1.5, R=6.0, sigma=2.0)
-
-# 3. Simulation — 5 seconds on GPU, 1 minute on CPU
-# 4. Beautiful 3D visualization in browser
-```
-
-**The result:** WarpTorch is **10-100x faster** than MATLAB.
 
 ## Usage examples 💻
 
@@ -268,27 +240,6 @@ Select simulation:
 
 **Result:** Just choose what to simulate — WarpTorch handles the rest!
 
-## Who can use WarpTorch? 👥
-
-### For theoretical physicists:
-- Explore new warp metrics
-- Test hypotheses in minutes instead of days
-- Publish papers with real simulations
-
-### For Data Scientists:
-- Apply machine learning to physics
-- Optimize warp drive parameters
-- Use PyTorch tensors for computations
-
-### For students:
-- Learn general relativity hands-on
-- Create coursework and thesis projects
-- Prepare for a scientific career
-
-### For space enthusiasts:
-- Understand how warp drives work
-- Create beautiful visualizations
-- Be part of a community changing the future
 
 ## Impact and future 🔮
 
@@ -310,7 +261,7 @@ Warp drives could fundamentally change human civilization by making interstellar
 - Enable rapid experimentation and discovery
 - Accelerate theoretical breakthroughs through collective effort
 
-This doesn't guarantee warp drives in our lifetime, but it significantly improves the odds from "almost never" to "potentially possible."
+
 
 ### Current focus
 
@@ -345,13 +296,7 @@ WarpFactory is great, but:
 
 **We stand on the shoulders of giants.** Thank you Applied Physics for the foundation!
 
-## Quick start 🫧
 
-Ready to try it yourself?
-
-<button onClick={() => window.location.href = '/docs/quick-start'}>
-  Get started in 3 minutes
-</button>
 
 Or explore the [API Reference](/docs/api/metrics) for advanced usage.
 
