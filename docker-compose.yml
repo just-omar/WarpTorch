@@ -65,6 +65,9 @@ services:
     container_name: warptorch-docs
     ports:
       - "${DOCS_PORT:-3553}:3553"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
     volumes:
       # Mount documentation directory for hot reload development
       - ./documentation:/app

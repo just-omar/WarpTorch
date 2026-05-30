@@ -67,3 +67,34 @@
   border-radius: 4px;
   margin: 1rem 0;
 }
+
+/* Table styling */
+.markdown > table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.markdown > table th {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #000000;
+  font-weight: 700;
+  border-bottom: 2px solid var(--ifm-border-color);
+  padding: 0.75rem;
+}
+
+[data-theme='dark'] .markdown > table th {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+.markdown > table td {
+  border-bottom: 1px solid var(--ifm-border-color);
+  padding: 0.75rem;
+  color: var(--ifm-font-color-base);
+}
+
+[data-theme='dark'] .markdown > table td {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+}

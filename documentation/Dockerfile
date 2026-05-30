@@ -14,5 +14,5 @@ COPY . .
 # Expose port
 EXPOSE 3553
 
-# Start Docusaurus
-CMD ["npm", "run", "start", "--", "--host", "0.0.0.0"]
+# Start Docusaurus with HMR optimizations and polling for Docker
+CMD ["npm", "run", "start", "--", "--host", "0.0.0.0", "--no-minify", "--poll", "1000"]

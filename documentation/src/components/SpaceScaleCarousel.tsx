@@ -86,17 +86,17 @@ export default function SpaceScaleCarousel(): React.Element {
                 color: 'var(--ifm-text-color)'
               }}>
                 <thead>
-                  <tr style={{ background: 'linear-gradient(135deg, var(--ifm-color-primary-light) 0%, var(--ifm-color-primary-dark) 100%)', opacity: 0.15 }}>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>Technology</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>Speed</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>% of c</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>Time to Proxima</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>Status</th>
+                  <tr style={{ background: 'rgba(0, 0, 0, 0.05)' }}>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>Technology</th>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>Speed</th>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>% of c</th>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>Time to Proxima</th>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr style={{ borderBottom: '1px solid var(--ifm-table-border-color)' }}>
-                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>Walking (5 km/h)</td>
+                    <td style={{ padding: '12px 14px', fontWeight: '600', color: 'var(--ifm-text-color)' }}>фыфыWalking (5 km/h)</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>1.4 m/s</td>
                     <td style={{ padding: '12px 14px', fontFamily: 'monospace', color: 'var(--ifm-text-color-secondary)' }}>4.7×10⁻⁹c</td>
                     <td style={{ padding: '12px 14px', color: 'var(--ifm-text-color)' }}>~290 million years</td>
@@ -287,16 +287,16 @@ export default function SpaceScaleCarousel(): React.Element {
                 color: 'var(--ifm-text-color)'
               }}>
                 <thead>
-                  <tr style={{ background: 'linear-gradient(135deg, var(--ifm-color-primary-light) 0%, var(--ifm-color-primary-dark) 100%)', opacity: 0.15 }}>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>Destination</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>Distance</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>Chemical</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>300 km/s</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>0.2c</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>0.9c</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>Warp 10c</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>Warp 100c</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: 'var(--ifm-color-primary)' }}>Warp 1000c</th>
+                  <tr style={{ background: 'rgba(0, 0, 0, 0.05)' }}>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>Destination</th>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>Distance</th>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>Chemical</th>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>300 km/s</th>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>0.2c</th>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>0.9c</th>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>Warp 10c</th>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>Warp 100c</th>
+                    <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: '700', color: '#000000' }}>Warp 1000c</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -483,8 +483,12 @@ export default function SpaceScaleCarousel(): React.Element {
           border-color: var(--ifm-table-border-color) !important;
         }
 
+        [data-theme='dark'] thead tr {
+          background: rgba(255, 255, 255, 0.15) !important;
+        }
+
         [data-theme='dark'] th {
-          color: var(--ifm-color-primary) !important;
+          color: #ffffff !important;
         }
 
         [data-theme='dark'] table tbody tr:last-child {
