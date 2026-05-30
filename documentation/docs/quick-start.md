@@ -61,37 +61,7 @@ pip install torch
 # Works automatically with MPS
 ```
 
-## Step 2: First simulation (30 seconds) 🫧
-
-Run the interactive menu:
-
-```bash
-python run_simulation.py
-```
-
-You'll see a menu:
-
-```
-🫧 WarpTorch Simulation Runner
-=============================
-
-Select simulation:
-  ▸ Alcubierre Warp Bubble
-    Lentz Soliton (positive energy)
-    Schwarzschild Black Hole
-    Van Den Broeck Bubble
-    Minkowski Space (flat)
-
-[↑↓] Navigate  |  [Enter] Run  |  [q] Quit
-```
-
-**Select "Alcubierre Warp Bubble"** → press Enter → wait 5 seconds...
-
-**Done!**
-
-Simulation saved in `output/` folder.
-
-## Step 3: Visualization (30 seconds) 📊
+## Step 2: Visualization (30 seconds) 📊
 
 Launch Jupyter Lab:
 
@@ -141,9 +111,9 @@ energy = get_energy_tensor(metric)
 # Visualize as interactive 2D slice
 energy_slice = get_2d_slice(energy, component=(0, 0), slice_plane='xy')
 
-# Create coordinate axes
-x_coords = (np.arange(grid_size[1]) * grid_scale[1]) - world_center[1]
-y_coords = (np.arange(grid_size[2]) * grid_scale[2]) - world_center[2]
+# Create coordinate axes (1-based indexing to match core implementation)
+x_coords = (np.arange(1, grid_size[1] + 1) * grid_scale[1]) - world_center[1]
+y_coords = (np.arange(1, grid_size[2] + 1) * grid_scale[2]) - world_center[2]
 
 fig = go.Figure(data=go.Heatmap(
     z=energy_slice.T, x=x_coords, y=y_coords,
