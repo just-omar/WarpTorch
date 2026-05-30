@@ -124,39 +124,6 @@ git push origin fix/amazing-feature
 
 ---
 
-### 👥 Find Your Role
-
-#### 👨‍💻 Frontend Developers
-**Improve:** `frontend/` - React, Three.js, 3D visualizations, UI/UX
-- Enhance 3D warp bubble rendering
-- Add interactive controls and animations
-- Improve responsive design and performance
-
-#### ⚙️ Backend Developers
-**Improve:** `core/`, `backend/` - Python, PyTorch, FastAPI, GPU computing
-- Optimize tensor operations and GPU kernels
-- Add new API endpoints and features
-- Improve computation performance
-
-#### 🔬 Physicists & Scientists
-**Improve:** `core/`, `jupyter_notebooks/` - Spacetime metrics, GR equations, analysis
-- Implement novel warp drive metrics
-- Add energy condition validations
-- Create physics tutorials and examples
-
-#### 📊 Data Scientists / ML Engineers
-**Improve:** `jupyter_notebooks/`, `core/` - PyTorch optimization, analysis workflows
-- Optimize GPU memory usage
-- Add advanced analysis notebooks
-- Improve numerical solvers
-
----
-
-**🚀 Ready?** Pick your role, follow the steps, and make your first contribution!
-
-
----
-
 ## 📜 Credits
 
 WarpTorch is a modern Python/PyTorch port of the pioneering open-source MATLAB project WarpFactory developed by Jared Fuchs, Christopher Helmerich, Alexey Bobrick, Gianni Martire, Brandon Melcher, and Luke Sellers.
