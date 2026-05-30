@@ -9,6 +9,44 @@
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
+            <title><![CDATA[Welcome to WarpTorch Documentation]]></title>
+            <link>https://just-omar.github.io/WarpTorch/blog/welcome</link>
+            <guid>https://just-omar.github.io/WarpTorch/blog/welcome</guid>
+            <pubDate>Thu, 23 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Welcome to the official WarpTorch documentation! This blog will keep you updated with the latest developments, tutorials, and research in GPU-accelerated general relativity simulations.]]></description>
+            <content:encoded><![CDATA[<p>Welcome to the official WarpTorch documentation! This blog will keep you updated with the latest developments, tutorials, and research in GPU-accelerated general relativity simulations.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-warptorch">What is WarpTorch?<a href="https://just-omar.github.io/WarpTorch/blog/welcome#what-is-warptorch" class="hash-link" aria-label="Direct link to What is WarpTorch?" title="Direct link to What is WarpTorch?" translate="no">​</a></h2>
+<p>WarpTorch is a high-performance, GPU-accelerated General Relativity toolkit designed for simulating, analyzing, and visualizing warp drive spacetimes. By porting and optimizing numerical relativity methods to modern PyTorch, we enable physicists and enthusiasts to solve Einstein's field equations at unprecedented speeds.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="key-features">Key Features<a href="https://just-omar.github.io/WarpTorch/blog/welcome#key-features" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Massive Acceleration</strong>: GPU-accelerated tensor computations with CUDA, ROCm, and Intel Arc support</li>
+<li class=""><strong>Comprehensive Library</strong>: Vectorized implementations of classical and novel warp metrics</li>
+<li class=""><strong>Advanced Solvers</strong>: 4th-order finite difference stencils for Einstein's field equations</li>
+<li class=""><strong>Web-Ready Export</strong>: JSON exporters for WebGL frontend integration</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="getting-started">Getting Started<a href="https://just-omar.github.io/WarpTorch/blog/welcome#getting-started" class="hash-link" aria-label="Direct link to Getting Started" title="Direct link to Getting Started" translate="no">​</a></h2>
+<p>Check out our <a class="" href="https://just-omar.github.io/WarpTorch/docs/quick-start">quick start guide</a> to get started with WarpTorch. Whether you prefer interactive 3D visualization in your browser or direct Python programming in Jupyter Lab, we have you covered.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="stay-tuned">Stay Tuned<a href="https://just-omar.github.io/WarpTorch/blog/welcome#stay-tuned" class="hash-link" aria-label="Direct link to Stay Tuned" title="Direct link to Stay Tuned" translate="no">​</a></h2>
+<p>Follow this blog for:</p>
+<ul>
+<li class=""><strong>Tutorials</strong>: Step-by-step guides for warp drive simulations</li>
+<li class=""><strong>Research Updates</strong>: Latest developments in warp drive physics</li>
+<li class=""><strong>Performance Tips</strong>: Optimize your simulations for maximum speed</li>
+<li class=""><strong>Community Highlights</strong>: Interesting projects from the WarpTorch community</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="join-the-community">Join the Community<a href="https://just-omar.github.io/WarpTorch/blog/welcome#join-the-community" class="hash-link" aria-label="Direct link to Join the Community" title="Direct link to Join the Community" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>GitHub</strong>: <a href="https://github.com/just-omar/WarpTorch" target="_blank" rel="noopener noreferrer" class="">https://github.com/just-omar/WarpTorch</a></li>
+<li class=""><strong>Issues</strong>: Report bugs and request features</li>
+<li class=""><strong>Contributions</strong>: We welcome contributions from the community</li>
+</ul>
+<p>Welcome aboard the WarpTorch project! 🚀</p>]]></content:encoded>
+            <author>omar@warptorch.org (Omar)</author>
+            <category>announcement</category>
+            <category>warptorch</category>
+            <category>release</category>
+        </item>
+        <item>
             <title><![CDATA[Contributing to WarpTorch: A Guide]]></title>
             <link>https://just-omar.github.io/WarpTorch/blog/collaboration-guide</link>
             <guid>https://just-omar.github.io/WarpTorch/blog/collaboration-guide</guid>
@@ -107,44 +145,6 @@
             <category>community</category>
             <category>contribution</category>
             <category>guide</category>
-        </item>
-        <item>
-            <title><![CDATA[Welcome to WarpTorch Documentation]]></title>
-            <link>https://just-omar.github.io/WarpTorch/blog/welcome</link>
-            <guid>https://just-omar.github.io/WarpTorch/blog/welcome</guid>
-            <pubDate>Thu, 23 May 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[Welcome to the official WarpTorch documentation! This blog will keep you updated with the latest developments, tutorials, and research in GPU-accelerated general relativity simulations.]]></description>
-            <content:encoded><![CDATA[<p>Welcome to the official WarpTorch documentation! This blog will keep you updated with the latest developments, tutorials, and research in GPU-accelerated general relativity simulations.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-warptorch">What is WarpTorch?<a href="https://just-omar.github.io/WarpTorch/blog/welcome#what-is-warptorch" class="hash-link" aria-label="Direct link to What is WarpTorch?" title="Direct link to What is WarpTorch?" translate="no">​</a></h2>
-<p>WarpTorch is a high-performance, GPU-accelerated General Relativity toolkit designed for simulating, analyzing, and visualizing warp drive spacetimes. By porting and optimizing numerical relativity methods to modern PyTorch, we enable physicists and enthusiasts to solve Einstein's field equations at unprecedented speeds.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="key-features">Key Features<a href="https://just-omar.github.io/WarpTorch/blog/welcome#key-features" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features" translate="no">​</a></h2>
-<ul>
-<li class=""><strong>Massive Acceleration</strong>: GPU-accelerated tensor computations with CUDA, ROCm, and Intel Arc support</li>
-<li class=""><strong>Comprehensive Library</strong>: Vectorized implementations of classical and novel warp metrics</li>
-<li class=""><strong>Advanced Solvers</strong>: 4th-order finite difference stencils for Einstein's field equations</li>
-<li class=""><strong>Web-Ready Export</strong>: JSON exporters for WebGL frontend integration</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="getting-started">Getting Started<a href="https://just-omar.github.io/WarpTorch/blog/welcome#getting-started" class="hash-link" aria-label="Direct link to Getting Started" title="Direct link to Getting Started" translate="no">​</a></h2>
-<p>Check out our <a class="" href="https://just-omar.github.io/WarpTorch/docs/quick-start">quick start guide</a> to get started with WarpTorch. Whether you prefer interactive 3D visualization in your browser or direct Python programming in Jupyter Lab, we have you covered.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="stay-tuned">Stay Tuned<a href="https://just-omar.github.io/WarpTorch/blog/welcome#stay-tuned" class="hash-link" aria-label="Direct link to Stay Tuned" title="Direct link to Stay Tuned" translate="no">​</a></h2>
-<p>Follow this blog for:</p>
-<ul>
-<li class=""><strong>Tutorials</strong>: Step-by-step guides for warp drive simulations</li>
-<li class=""><strong>Research Updates</strong>: Latest developments in warp drive physics</li>
-<li class=""><strong>Performance Tips</strong>: Optimize your simulations for maximum speed</li>
-<li class=""><strong>Community Highlights</strong>: Interesting projects from the WarpTorch community</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="join-the-community">Join the Community<a href="https://just-omar.github.io/WarpTorch/blog/welcome#join-the-community" class="hash-link" aria-label="Direct link to Join the Community" title="Direct link to Join the Community" translate="no">​</a></h2>
-<ul>
-<li class=""><strong>GitHub</strong>: <a href="https://github.com/just-omar/WarpTorch" target="_blank" rel="noopener noreferrer" class="">https://github.com/just-omar/WarpTorch</a></li>
-<li class=""><strong>Issues</strong>: Report bugs and request features</li>
-<li class=""><strong>Contributions</strong>: We welcome contributions from the community</li>
-</ul>
-<p>Welcome aboard the WarpTorch project! 🚀</p>]]></content:encoded>
-            <author>omar@warptorch.org (Omar)</author>
-            <category>announcement</category>
-            <category>warptorch</category>
-            <category>release</category>
         </item>
     </channel>
 </rss>
