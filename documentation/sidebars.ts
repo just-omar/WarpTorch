@@ -4,6 +4,7 @@ const sidebars: SidebarsConfig = {
   tutorialSidebar: [
     'intro',
     'quick-start',
+    'examples',
     {
       type: 'category',
       label: 'API Reference',
